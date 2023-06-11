@@ -28,6 +28,8 @@
         .charcoal {
             background-color: #212121;
         }
+
+        [x-cloak] { display: none !important; }
     </style>
 
     <!-- AlpineJS -->
@@ -35,6 +37,7 @@
     <!-- Font Awesome -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
     <!-- Scripts -->
+    @livewireStyles()
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="bg-gray-200 font-family-karla">
@@ -68,7 +71,8 @@
                                     <p> no arrow </p>
                                 @endif
                             </a>
-                            <div x-show="open === '{{ $loop->index }}'" 
+                            <div x-cloak
+                                x-show="open === '{{ $loop->index }}'"
                                 @mouseenter="open = '{{ $loop->index }}'" 
                                 @mouseleave="open = null" 
                                 class="border-2 border-red-600 z-40 bg-black inline-flex flex-col justify-center items-center absolute top-full left-0 right-0 p-3"
@@ -162,6 +166,6 @@
             }
         }
     </script>
-
+    @livewireScripts
 </body>
 </html>

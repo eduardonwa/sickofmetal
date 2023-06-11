@@ -27,30 +27,30 @@
                 
                 <div class="w-1/2">
                     @if($prev)
-                    <a href="{{ route('view', $prev) }}" class="block w-full bg-white shadow hover:shadow-md text-left p-6">
-                        <p class="text-lg text-blue-800 font-bold flex items-center">
-                            <i class="fas fa-arrow-left pr-1"></i>
-                            Previous
-                        </p>
-                        <p class="pt-2">
-                            {{ \Illuminate\Support\Str::words($prev->title, 5) }}
-                        </p>
-                    </a>
+                        <a href="{{ route('view', $prev) }}" class="block w-full bg-white shadow hover:shadow-md text-left p-6">
+                            <p class="text-lg text-blue-800 font-bold flex items-center">
+                                <i class="fas fa-arrow-left pr-1"></i>
+                                Previous
+                            </p>
+                            <p class="pt-2">
+                                {{ \Illuminate\Support\Str::words($prev->title, 5) }}
+                            </p>
+                        </a>
                     @endif
                 </div>
 
                 <div class="w-1/2">
                     @if($next)
-                    <a href="{{ route('view', $next) }}" class="block w-full bg-white shadow hover:shadow-md text-right p-6">
-                        <p class="text-lg text-blue-800 font-bold flex items-center justify-end">
-                            Next <i class="fas fa-arrow-right pl-1"></i></p>
-                        <p class="pt-2">
-                            {{ \Illuminate\Support\Str::words($next->title, 5) }}
-                        </p>
-                    </a>
+                        <a href="{{ route('view', $next) }}" class="block w-full bg-white shadow hover:shadow-md text-right p-6">
+                            <p class="text-lg text-blue-800 font-bold flex items-center justify-end">
+                                Next <i class="fas fa-arrow-right pl-1"></i></p>
+                            <p class="pt-2">
+                                {{ \Illuminate\Support\Str::words($next->title, 5) }}
+                            </p>
+                        </a>
                     @endif
                 </div>
-
+                <livewire:upvote-downvote :post="$post" />
             </div>
         </article>
 
