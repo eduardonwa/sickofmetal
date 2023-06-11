@@ -34,6 +34,8 @@
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
     <!-- Font Awesome -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
+    <!-- Scripts -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="bg-gray-200 font-family-karla">
         
@@ -59,7 +61,12 @@
                     @foreach ($allCategories as $category)
                         <div class="py-2 relative" @mouseenter="open = '{{ $loop->index }}'" @mouseleave="open = null">
                             <a href="{{ route('by-category', $category) }}" class="text-white text-lg transition ease-out hover:bg-gray-100 hover:text-black rounded py-2 px-4 mx-2">
-                                {{ $category->title }} <i :class="open === '{{ $loop->index }}' ? 'fa-chevron-down': 'fa-chevron-up'" class="fas ml-2"></i>
+                                {{ $category->title }} 
+                                @if ($category->parent_id == null) <!-- && check if category has children -->
+                                    <i :class="open === '{{ $loop->index }}' ? 'fa-chevron-down': 'fa-chevron-up'" class="fas ml-2"></i>
+                                @else
+                                    <p> no arrow </p>
+                                @endif
                             </a>
                             <div x-show="open === '{{ $loop->index }}'" 
                                 @mouseenter="open = '{{ $loop->index }}'" 
@@ -75,6 +82,44 @@
                         </div>
                     @endforeach
                     <a href="{{ route('about') }}" class="text-white text-lg transition ease-out hover:bg-gray-100 hover:text-black rounded py-2 px-4 mx-2">About S.O.M.</a>
+                    @auth()
+                        <!-- Settings Dropdown -->
+                        <div class="sm:flex sm:items-center sm:ml-6">
+                            <x-dropdown align="right" width="48">
+                                <x-slot name="trigger">
+                                    <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
+                                        <div>{{ Auth::user()->name }}</div>
+
+                                        <div class="ml-1">
+                                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                            </svg>
+                                        </div>
+                                    </button>
+                                </x-slot>
+
+                                <x-slot name="content">
+                                    <x-dropdown-link :href="route('profile.edit')">
+                                        {{ __('Profile') }}
+                                    </x-dropdown-link>
+
+                                    <!-- Authentication -->
+                                    <form method="POST" action="{{ route('logout') }}">
+                                        @csrf
+
+                                        <x-dropdown-link :href="route('logout')"
+                                                onclick="event.preventDefault();
+                                                            this.closest('form').submit();">
+                                            {{ __('Log Out') }}
+                                        </x-dropdown-link>
+                                    </form>
+                                </x-slot>
+                            </x-dropdown>
+                        </div>
+                    @else
+                        <a href="{{ route('login') }}" class="text-white text-lg transition ease-out hover:bg-gray-100 hover:text-black rounded py-2 px-4 mx-2">Login</a>
+                        <a href="{{ route('register') }}" class="text-white text-lg transition ease-out hover:bg-gray-100 hover:text-black rounded py-2 px-4 mx-2">Register</a>
+                    @endauth
                 </div>
             </div>
         </div>
