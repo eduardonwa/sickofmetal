@@ -19,7 +19,7 @@
                     </h3>
                 </a>
                 <p>
-                    {{ $post->getFormattedDate() }}
+                    {{ $post->getFormattedDate() }} | {{ $post->human_read_Time }}
                 </p>
             </div>
         </div>

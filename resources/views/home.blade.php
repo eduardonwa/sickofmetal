@@ -13,8 +13,8 @@
                         {{ $latestPost->title }}
                     </h3>
                 </a>
-                <p class="text-sm m-1 text-gray-300">
-                    {{ $latestPost->shortBody() }}
+                <p class="text-sm text-gray-300">
+                    {!! $latestPost->shortBody() !!}
                 </p>
             </div> <!-- latest news end -->
         </article>  

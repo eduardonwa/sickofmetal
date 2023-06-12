@@ -14,15 +14,18 @@
                 <h1 class="text-3xl font-bold hover:text-gray-700 pb-4">
                     {{ $post->title }}
                 </h1>
-                <p class="text-sm pb-8">
+                <p class="text-sm">
                     By <span class="font-semibold hover:text-gray-800">
                         {{ $post->user->name }}
-                    </span>, Published on {{ $post->getFormattedDate() }}
+                    </span>, Published on {{ $post->getFormattedDate() }} | {{ $post->human_read_time }}
                 </p>
-                <div>
+                <livewire:upvote-downvote :post="$post" />
+                <div class="border border-gray-700 border-b-2"></div>
+                <div class="my-8 text-lg">
                     {!! $post->body !!}
                 </div>
             </div>
+            
             <div class="lg:col-start-1 lg:col-end-5 w-full flex pt-6">
                 
                 <div class="w-1/2">
@@ -50,7 +53,7 @@
                         </a>
                     @endif
                 </div>
-                <livewire:upvote-downvote :post="$post" />
+                
             </div>
         </article>
 

@@ -141,7 +141,8 @@
             </p>
         </div>
     </footer>
-
+    
+    @livewireScripts
     <script>
         function getCarouselData() {
             return {
@@ -166,6 +167,5 @@
             }
         }
     </script>
-    @livewireScripts
 </body>
 </html>
