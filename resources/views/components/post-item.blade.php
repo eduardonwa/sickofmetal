@@ -1,28 +1,21 @@
-<article class="bg-white shadow my-4 px-4 py-3 hover:bg-red-600 transition ease-out">
-    <div class="flex-col items-center justify-center">
-
-        <div class="md:grid md:grid-cols-6 lg:grid-rows-2">
-            <a href="{{ route('view', $post) }}"
-                class="md:col-span-2 lg:row-start-1 lg:col-span-full md:w-full"
-            >
-                <img class="pr-2 md:w-full md:object-cover" src="{{ $post->getThumbnail() }}">
-            </a>
-            <div class="flex-col md:col-span-4 flex lg:row-start-2 lg:col-span-full">
-                @foreach($post->categories as $category)
-                    <a href="category/{{ $category->slug }}" class="hover:text-white text-blue-700 text-sm font-bold uppercase pb-4">
+<article class="mx-auto px-4 bg-white shadow-md py-3">
+    <div class="">
+        <div class="md:flex-col w-full">
+            <div class="flex-col md:col-span-4 flex">
+                @foreach($popularPost->categories as $category)
+                    <a href="category/{{ $category->slug }}" class="text-blue-700 text-lg font-bold uppercase">
                         {{ $category->title }}
                     </a>
                 @endforeach
-                <a href="{{ route('view', $post) }}">
-                    <h3 class="text-lg font-bold hover:text-white transition ease-out">
-                        {{$post->title}}
+                <a href="{{ route('view', $popularPost) }}">
+                    <h3 class="text-lg font-bold hover:text-red-600 transition ease-out">
+                        {{$popularPost->title}}
                     </h3>
                 </a>
                 <p>
-                    {{ $post->getFormattedDate() }} | {{ $post->human_read_Time }}
+                    {{ $popularPost->getFormattedDate() }} | {{ $popularPost->human_read_Time }}
                 </p>
             </div>
         </div>
-
-    </div>
-</article>
+    </div> <!-- popular post end -->
+</article> <!-- popular post wrapper end -->

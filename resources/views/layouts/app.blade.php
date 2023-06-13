@@ -142,7 +142,7 @@
         </div>
     </footer>
     
-    @livewireScripts
+
     <script>
         function getCarouselData() {
             return {
