@@ -16,7 +16,10 @@ export default {
             },
             spacing: {
                 '2/3': '66.666667%'
-            }
+            },
+            colors: {
+                'charcoal': '#212121',
+            },
         },
     },
 

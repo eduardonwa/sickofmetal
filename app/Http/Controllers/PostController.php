@@ -17,6 +17,7 @@ class PostController extends Controller
      */
     public function home()
     {
+        //show the latest post created
         $latestPost = Post::where('active', '=', 1)
             ->where('published_at', '<', Carbon::now())
             ->orderBy('published_at', 'desc')
@@ -36,9 +37,27 @@ class PostController extends Controller
             ->where('published_at', '<', Carbon::now())
             ->orderByDesc('upvote_count')
             ->groupBy('posts.id')
-            ->limit(3)
+            ->limit(5)
             ->get();
 
+        // show recent categories with latest posts
+        $categories = Category::query()
+            // ->with(['posts' => function ($query) {
+            //     $query->orderByDesc('published_at')->limit(3);
+            // }])
+            ->whereHas('posts', function($query) {
+                $query->where('active', '=', 1)
+                      ->where('published_at', '<', Carbon::now());
+            })
+            ->select('categories.*')
+            ->selectRaw('MAX(posts.published_at) as max_date')
+            ->leftJoin('category_post', 'categories.id', '=', 'category_post.category_id')
+            ->leftJoin('posts', 'posts.id', '=', 'category_post.post_id')
+            ->orderByDesc('max_date')
+            ->groupBy('categories.id')
+            ->limit(2)
+            ->get();
+        
         // if authorized show recommended posts based on user upvotes
         $user = auth()->user();
 
@@ -51,11 +70,13 @@ class PostController extends Controller
                 ->leftJoin(DB::raw($leftJoin), function ($join) {
                     $join->on('t.category_id', '=', 'cp.category_id')
                          ->on('t.post_id', '!=', 'cp.post_id');
-                })
+                        })
                 ->select('posts.*')
+                ->where('posts.id', '!=', DB::raw('t.post_id'))
                 ->setBindings([$user->id])
                 ->limit(2)
                 ->get();
+        // not authorized = popular posts based on views
         } else {
             $recommendedPosts = Post::query()
                 ->leftJoin('post_views', 'posts.id', '=', 'post_views.post_id')
@@ -66,12 +87,13 @@ class PostController extends Controller
                 ->limit(2)
                 ->get();
         }
-        // not authorized = popular posts based on views
 
-        // show recent categories with latest posts
-
-     
-        return view('home', compact('latestPost', 'popularPosts', 'recommendedPosts'));
+        return view('home', compact(
+            'latestPost', 
+            'popularPosts', 
+            'recommendedPosts', 
+            'categories'
+        ));
     }
 
     /**

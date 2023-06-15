@@ -25,10 +25,6 @@
             margin-top: 1rem;
         }
 
-        .charcoal {
-            background-color: #212121;
-        }
-
         [x-cloak] { display: none !important; }
     </style>
 
@@ -43,50 +39,80 @@
 <body class="bg-gray-200 font-family-karla">
         
     <!-- Topic Nav -->
-    <nav class="flex-col items-center justify-center w-full py-4 charcoal" x-data="{ open: false }">
-        <div class="block sm:hidden">
-            <a
-                href="#"
-                class="md:hidden text-white text-lg font-bold uppercase text-center flex justify-center items-center"
-                @click="open = !open"
-            >
-                Menu <i :class="open ? 'fa-chevron-down': 'fa-chevron-up'" class="fas ml-2"></i>
-            </a>
-        </div>
-        <div :class="open ? 'block': 'hidden'" class="w-full flex-grow sm:flex sm:items-center sm:w-auto mx-auto gap-3 lg:grid lg:grid-cols-5">
-            <div class="lg:flex lg:justify-end">
-                <a class="lg:w-64 p-2" href="/">
-                    <img src="{{ \App\Models\TextWidget::getImage('header') }}" alt="" srcset="">
+    <nav class="bg-charcoal" x-data="{ open: false }">
+        <div class="p-3">
+            <div class="block md:hidden">
+                <a
+                    href="#"
+                    class="md:hidden text-white text-lg font-bold uppercase text-center flex justify-center items-center"
+                    @click="open = !open"
+                >
+                    Menu <i :class="open ? 'fa-chevron-down': 'fa-chevron-up'" class="fas ml-2"></i>
                 </a>
             </div>
-            <div x-data="{ open: null }" class="lg:col-span-4 w-full flex-grow sm:flex sm:items-center sm:w-auto charcoal">
-                <div class="w-full container mx-auto flex flex-col sm:flex-row items-center justify-center text-sm font-bold uppercase mt-0 px-6 py-2">
-                    @foreach ($allCategories as $category)
-                        <div class="py-2 relative" @mouseenter="open = '{{ $loop->index }}'" @mouseleave="open = null">
-                            <a href="{{ route('by-category', $category) }}" class="text-white text-lg transition ease-out hover:bg-gray-100 hover:text-black rounded py-2 px-4 mx-2">
-                                {{ $category->title }} 
-                                @if ($category->parent_id == null) <!-- && check if category has children -->
-                                    <i :class="open === '{{ $loop->index }}' ? 'fa-chevron-down': 'fa-chevron-up'" class="fas ml-2"></i>
-                                @else
-                                    <p> no arrow </p>
-                                @endif
-                            </a>
-                            <div x-cloak
-                                x-show="open === '{{ $loop->index }}'"
+        </div> <!-- menu icon -->
+
+        <div class="w-full lg:grid lg:items-center lg:grid-cols-5">
+            <a class="" href="/">
+                <img
+                    class="w-48 mx-auto py-4 lg:col-start-1 lg:col-end-2" 
+                    src="{{ \App\Models\TextWidget::getImage('header') }}"
+                >
+            </a> <!-- logo end -->
+
+            <div 
+                :class="open ? 'block': 'hidden'" 
+                class="w-full flex-grow md:flex md:items-center md:w-auto lg:col-start-3 lg:col-end-5 mx-auto gap-3"
+            >
+                <div 
+                    x-data="{ open: null }" 
+                    class="w-full flex-grow sm:flex sm:items-center sm:w-auto bg-charcoal"
+                >
+                    <div class="container mx-auto flex flex-col sm:flex-row items-center justify-center text-sm font-bold uppercase mt-0 px-6 py-2">
+                        @foreach ($allCategories as $category)
+                            <div 
+                                class="py-2 relative w-full lg:w-auto" 
                                 @mouseenter="open = '{{ $loop->index }}'" 
-                                @mouseleave="open = null" 
-                                class="border-2 border-red-600 z-40 bg-black inline-flex flex-col justify-center items-center absolute top-full left-0 right-0 p-3"
+                                @mouseleave="open = null"
                             >
-                                @foreach($category->subCategory as $subCategory)  
-                                    <a href="{{ route('by-category', $subCategory) }}" class="text-white text-center text-lg transition ease-out hover:bg-gray-100 hover:text-black rounded py-2 px-4 mx-2">
-                                        {{ $subCategory->title }}
+                                <div class="flex items-center justify-between md:flex-none">
+                                    <a 
+                                        href="{{ route('by-category', $category) }}" 
+                                        class="text-white text-lg transition ease-out hover:bg-gray-100 hover:text-black rounded py-2 px-4 mx-2"
+                                    >
+                                        {{ $category->title }} 
                                     </a>
-                                @endforeach
+                                    @if ($category->parent_id == null && $category->subCategory()->count() > 0)
+                                        <i :class="open === '{{ $loop->index }}' ? 'fa-chevron-up': 'fa-chevron-down'" 
+                                            class="fas ml-2 text-white font-bold cursor-pointer text-lg" 
+                                            @click="open = open === '{{ $loop->index }}' ? null : '{{ $loop->index }}'">
+                                        </i>
+                                </div>
+
+                                <div x-cloak
+                                    x-show="open === '{{ $loop->index }}'"
+                                    @mouseenter="open = '{{ $loop->index }}'" 
+                                    @mouseleave="open = null" 
+                                    class="lg:w-44 w-full border-2 border-red-600 z-40 bg-black inline-flex flex-col justify-center items-center relative lg:absolute top-full left-0 right-0 p-3"
+                                >
+                                    @foreach($category->subCategory as $subCategory)  
+                                        <a 
+                                            href="{{ route('by-category', $subCategory) }}" 
+                                            class="text-white text-center text-lg transition ease-out hover:bg-gray-100 hover:text-black rounded p-2"
+                                        >
+                                            {{ $subCategory->title }}
+                                        </a>
+                                    @endforeach
+
+                                    @else
+                                        <!-- this category has no subcategories -->
+                                    @endif
+                                </div>
                             </div>
-                        </div>
-                    @endforeach
-                    <a href="{{ route('about') }}" class="text-white text-lg transition ease-out hover:bg-gray-100 hover:text-black rounded py-2 px-4 mx-2">About S.O.M.</a>
-                    @auth()
+
+                        @endforeach
+                        <a href="{{ route('about') }}" class="w-full text-white text-lg transition ease-out hover:bg-gray-100 hover:text-black rounded py-2 px-4">About S.O.M.</a>
+                        @auth()
                         <!-- Settings Dropdown -->
                         <div class="sm:flex sm:items-center sm:ml-6">
                             <x-dropdown align="right" width="48">
@@ -120,14 +146,20 @@
                                 </x-slot>
                             </x-dropdown>
                         </div>
-                    @else
-                        <a href="{{ route('login') }}" class="text-white text-lg transition ease-out hover:bg-gray-100 hover:text-black rounded py-2 px-4 mx-2">Login</a>
-                        <a href="{{ route('register') }}" class="text-white text-lg transition ease-out hover:bg-gray-100 hover:text-black rounded py-2 px-4 mx-2">Register</a>
-                    @endauth
+                        @else
+                        <div class="border flex w-full">
+                            <a href="{{ route('login') }}" class="text-white text-lg transition ease-out hover:bg-gray-100 hover:text-black rounded py-2 px-4">Login</a>
+                            <a href="{{ route('register') }}" class="text-white text-lg transition ease-out hover:bg-gray-100 hover:text-black rounded py-2 px-4">Register</a>
+                        </div>
+                        @endauth
+                    </div>
                 </div>
             </div>
-        </div>
-    </nav>
+
+        </div> <!-- desktop menu end -->
+
+    </nav> <!-- navbar end -->
+
     
     <div class="container mx-auto py-6 gap-3 grid lg:grid-cols-5">
         {{ $slot }}
@@ -141,7 +173,6 @@
             </p>
         </div>
     </footer>
-    
 
     <script>
         function getCarouselData() {
