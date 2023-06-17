@@ -1,9 +1,9 @@
 <x-app-layout>
-    <section class="flex flex-col items-center px-3 lg:col-start-1 lg:col-end-5">
+    <section class="flex flex-col px-3 lg:col-start-1 lg:col-end-4">
         <article class="flex flex-col my-4">
             <!-- Article Image -->
             <div class="hover:opacity-75">
-                <img src="{{ $post->getThumbnail() }}">
+                <img class="w-full object-contain" src="{{ $post->getThumbnail() }}">
             </div>
             <div class="bg-white flex flex-col justify-start p-6">
                 @foreach($post->categories as $category)
@@ -19,7 +19,9 @@
                         {{ $post->user->name }}
                     </span>, Published on {{ $post->getFormattedDate() }} | {{ $post->human_read_time }}
                 </p>
+
                 <livewire:upvote-downvote :post="$post" />
+
                 <div class="border border-gray-700 border-b-2"></div>
                 <div class="my-8 text-lg">
                     {!! $post->body !!}
@@ -54,8 +56,17 @@
                     @endif
                 </div>
                 
-            </div>
-        </article>
-
-    </section>
+            </div> <!-- prev and next end -->
+        </article> <!-- article, prev and next end -->
+        
+        <livewire:comments :post="$post" /> <!-- comments end -->
+    
+    </section> 
+    <div class="lg:col-start-4 lg:col-end-5">
+        <h1 class="rounded-md mx-3 md:mx-0 my-2 text-md p-2 font-bold uppercase bg-black w-max text-center text-white">POPULAR</h1>
+            @foreach ($popularPosts as $popularPost)
+                <x-post-item :popularPost="$popularPost"></x-post-item>
+            @endforeach <!-- popular post column end -->
+    </div> <!-- popular posts end -->
+    
 </x-app-layout>

@@ -36,11 +36,11 @@
                         <img class="grow" src="{{ $recommended->getThumbnail() }}">
                         <div class="px-6 py-4">
                             @foreach($recommended->categories as $category)
-                            <span class="uppercase font-bold text-md text-blue-600">
+                            <span class="uppercase font-bold text-md text-blue-700">
                                 {{$category->title}}
                             </span>
                             @endforeach
-                            <p class="font-bold hover:text-red-500 transition ease-in-out">
+                            <p class="font-bold hover:text-red-500 text-lg transition ease-in-out">
                                 {{ $recommended->title }}
                             </p>
                         </div>
@@ -54,19 +54,20 @@
 
     @foreach($categories as $category)
     <div class="mx-4 md:mx-0 md:col-start-2 md:col-end-5">
-        <h3 class="pb-3 uppercase font-bold text-md text-blue-600">{{ $category->title }}</h3>
+        <h3 class="pb-3 uppercase font-bold text-md text-blue-700">
+            {{ $category->title }}
+        </h3>
         <div class="p-2 bg-white shadow-md">
             @foreach($category->publishedPosts()->limit(2)->get() as $post)
-                <a href="{{ route('view', $post) }}"
-                    class=""
-                >
-                    <div class="flex">
-                        <img class="py-1 w-40 object-contain" src="{{ $post->getThumbnail() }}" alt="">
-                            <div class="flex-col mx-3">
-                                <p class="uppercase font-bold text-md text-red-600 lg:text-black hover:text-red-600">
+                <a href="{{ route('view', $post) }}">
+                    <div class="grid grid-cols-[max-content_1fr]">
+                        <img class="py-1 w-40 object-cover" src="{{ $post->getThumbnail() }}" alt="">
+                            <div class="-col-col mx-3">
+                                <p class="text-xl uppercase font-bold text-md text-red-600 lg:text-black hover:text-red-600">
                                     {{ $post->title }}
                                 </p>
-                                <p class="font-bold hover:text-red-500 transition ease-in-out">
+                                </a>
+                                <p class="text-lg">
                                     {!! $post->shortBody(10) !!}
                                 </p>
                                 <p class="pt-4">
@@ -74,10 +75,10 @@
                                 </p>
                             </div>
                     </div>
-                </a>
+                
             @endforeach
         </div>
-    </div>
+    </div> <!-- categories end -->
     @endforeach
 
 </x-app-layout>

@@ -25,7 +25,7 @@ class PostController extends Controller
             ->limit(1)
             ->first();
 
-        // show the 3 most popular posts
+        // show the 5 most popular posts
         $popularPosts = Post::query()
             ->leftJoin('upvote_downvotes', 'post_id', '=', 'upvote_downvotes.post_id')
             ->select('posts.*', DB::raw('COUNT(upvote_downvotes.id) as upvote_count'))
@@ -130,7 +130,22 @@ class PostController extends Controller
             'user_id' => $user?->id
         ]);
 
-        return view('post.view', compact('post', 'prev', 'next'));
+                // show the 5 most popular posts
+                $popularPosts = Post::query()
+                ->leftJoin('upvote_downvotes', 'post_id', '=', 'upvote_downvotes.post_id')
+                ->select('posts.*', DB::raw('COUNT(upvote_downvotes.id) as upvote_count'))
+                ->where(function($query) {
+                    $query->whereNull('upvote_downvotes.is_upvote')
+                        ->orWhere('upvote_downvotes.is_upvote', '=', 1);
+                })
+                ->where('active', '=', 1)
+                ->where('published_at', '<', Carbon::now())
+                ->orderByDesc('upvote_count')
+                ->groupBy('posts.id')
+                ->limit(5)
+                ->get();
+
+        return view('post.view', compact('post', 'prev', 'next', 'popularPosts'));
     }
 
     public function byCategory(Category $category)

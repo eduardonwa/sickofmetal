@@ -20,6 +20,7 @@ export default {
             colors: {
                 'charcoal': '#212121',
             },
+            border: ['focus'],
         },
     },
 

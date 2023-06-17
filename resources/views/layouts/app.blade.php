@@ -25,6 +25,10 @@
             margin-top: 1rem;
         }
 
+        .charcoal {
+            background-color: #212121;
+        }
+
         [x-cloak] { display: none !important; }
     </style>
 
@@ -37,9 +41,8 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="bg-gray-200 font-family-karla">
-        
     <!-- Topic Nav -->
-    <nav class="bg-charcoal" x-data="{ open: false }">
+    <nav class="charcoal" x-data="{ open: false }">
         <div class="p-3">
             <div class="block md:hidden">
                 <a
@@ -52,7 +55,7 @@
             </div>
         </div> <!-- menu icon -->
 
-        <div class="w-full lg:grid lg:items-center lg:grid-cols-5">
+        <div class="container mx-auto w-full lg:grid lg:items-center lg:grid-cols-5">
             <a class="" href="/">
                 <img
                     class="w-48 mx-auto py-4 lg:col-start-1 lg:col-end-2" 
@@ -68,7 +71,7 @@
                     x-data="{ open: null }" 
                     class="w-full flex-grow sm:flex sm:items-center sm:w-auto bg-charcoal"
                 >
-                    <div class="container mx-auto flex flex-col sm:flex-row items-center justify-center text-sm font-bold uppercase mt-0 px-6 py-2">
+                    <div class="mx-auto flex flex-col items-center justify-center sm:flex-row text-sm font-bold uppercase mt-0 px-6 py-2">
                         @foreach ($allCategories as $category)
                             <div 
                                 class="py-2 relative w-full lg:w-auto" 
@@ -107,59 +110,56 @@
                                     @else
                                         <!-- this category has no subcategories -->
                                     @endif
-                                </div>
-                            </div>
-
+                                </div> <!-- subcategories menu end -->
+                            </div> <!-- categories menu end -->
                         @endforeach
-                        <a href="{{ route('about') }}" class="w-full text-white text-lg transition ease-out hover:bg-gray-100 hover:text-black rounded py-2 px-4">About S.O.M.</a>
-                        @auth()
-                        <!-- Settings Dropdown -->
-                        <div class="sm:flex sm:items-center sm:ml-6">
-                            <x-dropdown align="right" width="48">
-                                <x-slot name="trigger">
-                                    <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
-                                        <div>{{ Auth::user()->name }}</div>
-
-                                        <div class="ml-1">
-                                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                            </svg>
-                                        </div>
-                                    </button>
-                                </x-slot>
-
-                                <x-slot name="content">
-                                    <x-dropdown-link :href="route('profile.edit')">
-                                        {{ __('Profile') }}
-                                    </x-dropdown-link>
-
-                                    <!-- Authentication -->
-                                    <form method="POST" action="{{ route('logout') }}">
-                                        @csrf
-
-                                        <x-dropdown-link :href="route('logout')"
-                                                onclick="event.preventDefault();
-                                                            this.closest('form').submit();">
-                                            {{ __('Log Out') }}
-                                        </x-dropdown-link>
-                                    </form>
-                                </x-slot>
-                            </x-dropdown>
-                        </div>
-                        @else
-                        <div class="border flex w-full">
-                            <a href="{{ route('login') }}" class="text-white text-lg transition ease-out hover:bg-gray-100 hover:text-black rounded py-2 px-4">Login</a>
-                            <a href="{{ route('register') }}" class="text-white text-lg transition ease-out hover:bg-gray-100 hover:text-black rounded py-2 px-4">Register</a>
-                        </div>
-                        @endauth
+                            <a href="{{ route('about') }}" class="w-full text-white text-lg transition ease-out hover:bg-gray-100 hover:text-black rounded p-2 ml-7 md:ml-0">
+                                About
+                            </a>
                     </div>
                 </div>
             </div>
+            @auth()
+                <!-- Settings Dropdown -->
+                <div class="sm:flex sm:items-center sm:ml-6">
+                    <x-dropdown align="custom" width="48">
+                        <x-slot name="trigger">
+                            <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
+                                <div>{{ Auth::user()->name }}</div>
 
+                                <div class="ml-1">
+                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                            </button>
+                        </x-slot>
+                        <x-slot name="content">
+                            <x-dropdown-link :href="route('profile.edit')">
+                                {{ __('Profile') }}
+                            </x-dropdown-link>
+
+                            <!-- Authentication -->
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+
+                                <x-dropdown-link :href="route('logout')"
+                                        onclick="event.preventDefault();
+                                                    this.closest('form').submit();">
+                                    {{ __('Log Out') }}
+                                </x-dropdown-link>
+                            </form>
+                        </x-slot>
+                    </x-dropdown>
+                </div>
+            @else
+                <div class="flex justify-center md:items-end gap-x-4 py-4 lg:py-0 lg:flex-col md:text-center w-full">
+                    <a href="{{ route('login') }}" class="md:text-black lg:text-white text-lg transition ease-out lg:bg-transparent bg-gray-200 p-2 hover:bg-gray-100 hover:text-black py-2">Login</a>
+                    <a href="{{ route('register') }}" class="md:text-black lg:text-white text-lg transition ease-out lg:bg-transparent bg-gray-200 p-2 hover:bg-gray-100 hover:text-black py-2">Register</a>
+                </div>
+            @endauth
         </div> <!-- desktop menu end -->
-
     </nav> <!-- navbar end -->
-
     
     <div class="container mx-auto py-6 gap-3 grid lg:grid-cols-5">
         {{ $slot }}

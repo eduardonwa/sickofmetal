@@ -12,6 +12,9 @@ switch ($align) {
     default:
         $alignmentClasses = 'origin-top-right right-0';
         break;
+    case 'custom':
+        $alignmentClasses = 'origin-top top-12';
+        break;
 }
 
 switch ($width) {
@@ -21,7 +24,7 @@ switch ($width) {
 }
 @endphp
 
-<div class="relative" x-data="{ open: false }" @click.away="open = false" @close.stop="open = false">
+<div class="relative flex justify-center lg:justify-end p-4 w-full" x-data="{ open: false }" @click.away="open = false" @close.stop="open = false">
     <div @click="open = ! open">
         {{ $trigger }}
     </div>
