@@ -24,7 +24,7 @@ switch ($width) {
 }
 @endphp
 
-<div class="relative flex justify-center lg:justify-end p-4 w-full" x-data="{ open: false }" @click.away="open = false" @close.stop="open = false">
+<div class="relative flex justify-center lg:justify-end py-4 w-full" x-data="{ open: false }" @click.away="open = false" @close.stop="open = false">
     <div @click="open = ! open">
         {{ $trigger }}
     </div>
