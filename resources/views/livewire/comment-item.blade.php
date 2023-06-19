@@ -7,19 +7,34 @@
         </div>
         <div>
             <div>
-                <a href="#" class="font-bold">John Smith</a>
+                <a href="#" class="font-bold"> {{ $comment->user->name }} </a>
                 - <span class="text-gray-500">{{ $comment->created_at->diffForHumans() }}</span>
             </div>
-            <div class="text-gray-700">
-                {{ $comment->comment }}
-            </div>
+            @if ($editing)
+                <livewire:comment-create :comment-model="$comment"/>
+            @else
+                <div class="text-gray-700">
+                    {{ $comment->comment }}
+                </div>
+            @endif
             <div>
-                <a href="#" class="text-sm mr-3">Reply</a>
+                <a wire:click.prevent="startReply" href="#" class="text-sm mr-3">Reply</a>
                 @if (\Illuminate\Support\Facades\Auth::id() == $comment->user_id)
-                    <a href="#" class="text-sm text-blue-500 mr-3">Edit</a>
-                    <a href="#" class="text-sm text-red-500">Delete</a>
+                    <a wire:click.prevent="startCommentEdit" href="#" class="text-sm text-blue-500 mr-3">Edit</a>
+                    <a wire:click.prevent="deleteComment" href="#" class="text-sm text-red-500">Delete</a>
                 @endif
             </div>
+            @if ($reply)
+                <livewire:comment-create :post="$comment->post" :parent-comment="$comment"/>
+            @endif
+
+            @if($comment->comments->count())
+            <div class="mt-4">
+                @foreach($comment->comments as $childComment)
+                    <livewire:comment-item :comment="$childComment" wire:key="comment-{{$childComment->id}}"/>
+                @endforeach
+            </div>
+            @endif
         </div>
     </div>
 </div>

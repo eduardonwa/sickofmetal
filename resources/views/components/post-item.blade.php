@@ -17,4 +17,4 @@
         </div>
     </div>
     <div class="hidden md:block border border-gray-200"></div> <!-- popular post end -->
-</article> <!-- popular post wrapper end -->
+</article> <!-- popular post wrapper end --> 

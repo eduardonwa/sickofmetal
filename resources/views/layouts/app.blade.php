@@ -7,8 +7,6 @@
     <meta name="author" content="Sick Of Metal">
     <meta name="description" content="{{ $metaDescription }}">
 
-    <!-- Tailwind -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
 
@@ -32,8 +30,6 @@
         [x-cloak] { display: none !important; }
     </style>
 
-    <!-- AlpineJS -->
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
     <!-- Font Awesome -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
     <!-- Scripts -->
@@ -160,6 +156,30 @@
             @endauth
         </div> <!-- desktop menu end -->
     </nav> <!-- navbar end -->
+    
+    <!-- search -->
+    <div class="grid lg:grid-cols-4 p-3 lg:p-0">
+        <form method="get" action="{{route('search')}}"
+              class="relative my-3 lg:col-start-4"
+        >
+            <input
+                name="q" value="{{request()->get('q')}}"
+                class="peer border border-black m-0 block h-[58px] w-full lg:w-72 rounded bg-transparent bg-clip-padding px-3 py-4 text-base font-normal leading-tight
+                text-black transition duration-200 ease-linear placeholder:text-transparent focus:border-primary focus:pb-[0.625rem] focus:pt-[1.625rem]
+                focus:text-black focus:shadow-lg peer-focus:text-primary dark:peer-focus:text-primary [&:not(:placeholder-shown)]:pb-[0.625rem] [&:not(:placeholder-shown)]:pt-[1.625rem]"
+                id="floatingInput"
+                placeholder="Search" />
+
+            <label
+                for="floatingInput"
+                class="pointer-events-none absolute left-0 top-0 origin-[0_0] border border-solid border-transparent px-3 py-4 text-gray-500
+                transition-[opacity,_transform] duration-200 ease-linear peer-focus:-translate-y-2 peer-focus:translate-x-[0.15rem]
+                peer-focus:scale-[0.85] peer-focus:text-primary peer-[:not(:placeholder-shown)]:-translate-y-2 peer-[:not(:placeholder-shown)]:translate-x-[0.15rem]
+                peer-[:not(:placeholder-shown)]:scale-[0.85] motion-reduce:transition-none"
+                >Search</label
+            >
+        </form> <!-- search elements end -->
+    </div> <!-- search end -->
     
     <div class="container mx-auto py-6 gap-3 grid lg:grid-cols-5">
         {{ $slot }}

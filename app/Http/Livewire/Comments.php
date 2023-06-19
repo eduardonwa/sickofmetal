@@ -8,29 +8,44 @@ use Livewire\Component;
 use Illuminate\Database\Eloquent\Collection;
 
 class Comments extends Component
-{
-    public $comments;
-    
+{    
     public Post $post;
 
     protected $listeners = [
-        'commentCreated' => 'commentCreated'
+        'commentCreated' => '$refresh',
+        'commentDeleted' => '$refresh'
     ];
 
     public function mount(Post $post)
     {
         $this->post = $post;
-        $this->comments = Comment::where('post_id', $this->post->id)->orderByDesc('created_at')->get();
     }
     
     public function render()
     {       
-        return view('livewire.comments');
+        $comments = $this->selectComments();
+        return view('livewire.comments', compact('comments'));
     }
 
     public function commentCreated(Int $id)
     {
         $comment = Comment::where('id', '=', $id)->first();
-        $this->comments = $this->comments->prepend($comment);
+        if (!$comment->parent_id) {
+            $this->comments = $this->comments->prepend($comment);
+        }
+    }
+
+    /**
+     * @return mixed
+     * @author guarpig
+     */
+
+    private function selectComments()
+    {
+        return Comment::where('post_id', '=', $this->post->id)
+            ->with(['post', 'user', 'comments'])
+            ->whereNull('parent_id')
+            ->orderByDesc('created_at')
+            ->get();
     }
 }

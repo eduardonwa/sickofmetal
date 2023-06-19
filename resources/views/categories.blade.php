@@ -1,4 +1,6 @@
-<x-app-layout :meta-title="'Sick Of Metal blog - Posts by category ' . $category->title" :meta-description="'By category description'">
+<x-app-layout :meta-title="'Sick Of Metal blog - Posts by category ' . $category->title" 
+              :meta-description="'By category description'"
+            >
     <div class="m-3 md:col-start-1 md:col-end-4 lg:col-end-5 lg:grid lg:grid-cols-2">
         @foreach ($posts as $post)
         <a class="m-5" href="{{ route('view', $post) }}">
