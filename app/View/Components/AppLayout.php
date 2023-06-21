@@ -4,6 +4,7 @@ namespace App\View\Components;
 
 use App\Models\Category;
 use Illuminate\View\View;
+use Illuminate\Support\Carbon;
 use Illuminate\View\Component;
 use Illuminate\Support\Facades\DB;
 
@@ -19,18 +20,25 @@ class AppLayout extends Component
      */
     public function render(): View
     {
-        $categories = Category::query()
-            ->leftJoin('category_post', 'categories.id', '=', 'category_post.category_id')
-            ->select('categories.title', 'categories.slug', DB::raw('count(*) as total'))
-            ->groupBy('categories.id')
-            ->orderByDesc('total')
+        $categories = Category::with(['subCategory'=>function ($query) {
+            $query->with(['posts'=>function ($q2) {
+                $q2->where('published_at', '<', Carbon::now());
+            }]);
+            }])->withCount('posts')
+            ->orderByDesc('posts_count')
             ->limit(5)
             ->get();
         
-        $allCategories = Category::whereNull('parent_id')
-            ->with('subCategory')
-            ->get();
-
+            $allCategories = Category::with('subCategory')
+            ->whereNull('parent_id')
+            ->get()
+            ->flatMap(function ($category) {
+                $subCategories = $category->subCategory->toArray();
+                unset($category['sub_category']);
+                return [$category] + $subCategories;
+            }); 
+            $allCategories = collect($allCategories)->where('parent_id', null)->values();
+            
         return view('layouts.app', compact('categories', 'allCategories'));
     }
 }

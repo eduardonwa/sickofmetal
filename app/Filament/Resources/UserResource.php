@@ -44,8 +44,7 @@ class UserResource extends Resource
                     ->maxLength(255)
                     ->hiddenOn('edit')
                     ->required()
-                    ->visibleOn('create')
-                    ->confirmed(),
+                    ->visibleOn('create'),
             ]);
     }
 

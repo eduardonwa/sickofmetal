@@ -19,5 +19,11 @@
             </div>
         </a>
         @endforeach
+
+        <div class="mt-20 p-4 lg:col-span-full">
+            {{ $posts->links() }}
+        </div>
+
     </div>
+
 </x-app-layout>

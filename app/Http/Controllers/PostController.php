@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Category;
+use App\Models\CategoryPost;
 use App\Models\PostView;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -55,7 +56,7 @@ class PostController extends Controller
             ->leftJoin('posts', 'posts.id', '=', 'category_post.post_id')
             ->orderByDesc('max_date')
             ->groupBy('categories.id')
-            ->limit(2)
+            ->limit(5)
             ->get();
         
         // if authorized show recommended posts based on user upvotes
@@ -74,7 +75,7 @@ class PostController extends Controller
                 ->select('posts.*')
                 ->where('posts.id', '!=', DB::raw('t.post_id'))
                 ->setBindings([$user->id])
-                ->limit(2)
+                ->limit(3)
                 ->get();
         // not authorized = popular posts based on views
         } else {
@@ -84,7 +85,7 @@ class PostController extends Controller
                 ->where('active', '=', 1)
                 ->where('published_at', '<', Carbon::now())
                 ->groupBy('posts.id')
-                ->limit(2)
+                ->limit(3)
                 ->get();
         }
 
@@ -130,37 +131,44 @@ class PostController extends Controller
             'user_id' => $user?->id
         ]);
 
-                // show the 5 most popular posts
-                $popularPosts = Post::query()
-                ->leftJoin('upvote_downvotes', 'post_id', '=', 'upvote_downvotes.post_id')
-                ->select('posts.*', DB::raw('COUNT(upvote_downvotes.id) as upvote_count'))
-                ->where(function($query) {
-                    $query->whereNull('upvote_downvotes.is_upvote')
-                        ->orWhere('upvote_downvotes.is_upvote', '=', 1);
-                })
-                ->where('active', '=', 1)
-                ->where('published_at', '<', Carbon::now())
-                ->orderByDesc('upvote_count')
-                ->groupBy('posts.id')
-                ->limit(5)
-                ->get();
+        // show the 5 most popular posts
+        $popularPosts = Post::query()
+        ->leftJoin('upvote_downvotes', 'post_id', '=', 'upvote_downvotes.post_id')
+        ->select('posts.*', DB::raw('COUNT(upvote_downvotes.id) as upvote_count'))
+        ->where(function($query) {
+            $query->whereNull('upvote_downvotes.is_upvote')
+                ->orWhere('upvote_downvotes.is_upvote', '=', 1);
+        })
+        ->where('active', '=', 1)
+        ->where('published_at', '<', Carbon::now())
+        ->orderByDesc('upvote_count')
+        ->groupBy('posts.id')
+        ->limit(5)
+        ->get();
 
         return view('post.view', compact('post', 'prev', 'next', 'popularPosts'));
     }
 
     public function byCategory(Category $category)
     {
-        $categories = Category::query();
 
-        $posts = Post::query()
-            ->join('category_post', 'posts.id', '=', 'category_post.post_id')
-            ->where('category_post.category_id', '=', $category->id)
-            ->where('active', '=', true)
+        // dd($category);
+        $catIDs = [$category->id];
+
+        $subCategories = $category->subCategory()->with('subCategory')->get();
+        foreach($subCategories as $subCategory) {
+            $catIDs[] =$subCategory->id;
+        }
+
+        $categoryPostIDs = CategoryPost::whereIn('category_id', $catIDs)->pluck('post_id');
+
+        $posts = Post::whereIn('id', $categoryPostIDs)
+            ->where('active', true)
             ->whereDate('published_at', '<=', Carbon::now())
             ->orderBy('published_at', 'desc')
             ->paginate(10);
 
-            return view('categories', compact('posts', 'categories', 'category'));
+            return view('categories', compact('posts', 'category'));
     }
 
     public function search(Request $request)
