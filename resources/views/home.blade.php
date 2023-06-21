@@ -63,12 +63,12 @@
                     <div class="grid grid-cols-[max-content_1fr] lg:grid-cols-[377px_1fr]">
                         <img class="py-1 w-40 lg:w-full object-cover" src="{{ $post->getThumbnail() }}" alt="">
                             <div class="mx-3">
-                                <p class="text-xl uppercase font-bold text-md text-red-600 lg:text-black hover:text-red-600">
+                                <p class="text-xl uppercase font-bold text-md transition ease-in-out text-red-600 lg:text-black hover:text-red-600">
                                     {{ $post->title }}
                                 </p>
                                 </a>
                                 <p class="text-lg">
-                                    {!! $post->shortBody(10) !!}
+                                    <x-markdown> {!! $post->shortBody(10) !!} </x-markdown>
                                 </p>
                                 <p class="pt-4">
                                     {{ $post->getFormattedDate() }}

@@ -24,7 +24,9 @@
 
                 <div class="border border-gray-700 border-b-2"></div>
                 <div class="my-8 text-lg">
-                    {!! $post->body !!}
+                    <x-markdown>
+                        {!! $post->body !!}
+                    </x-markdown>
                 </div>
             </div>
             

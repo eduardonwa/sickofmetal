@@ -14,6 +14,8 @@ use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\PostResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\PostResource\RelationManagers;
+use Spatie\FilamentMarkdownEditor\MarkdownEditor;
+use Filament\Forms\Components\ViewField;
 
 class PostResource extends Resource
 {
@@ -42,7 +44,7 @@ class PostResource extends Resource
                         ->required()
                         ->maxLength(2048),
                     ]),
-                    Forms\Components\RichEditor::make('body')
+                    MarkdownEditor::make('body')
                         ->required(),
                     Forms\Components\TextInput::make('meta_title'),
                     Forms\Components\TextInput::make('meta_description'),
@@ -103,5 +105,5 @@ class PostResource extends Resource
             'view' => Pages\ViewPost::route('/{record}'),
             'edit' => Pages\EditPost::route('/{record}/edit'),
         ];
-    }    
+    }
 }
