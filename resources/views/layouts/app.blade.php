@@ -1,5 +1,11 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html 
+    lang="{{ str_replace('_', '-', app()->getLocale()) }}"
+    x-data="{isDarkMode : localStorage.getItem('dark') === 'true'}"
+    x-init="$watch('isDarkMode', val => localStorage.setItem('dark', val))"
+    x-bind:class="{ 'dark' : isDarkMode }"
+    x-cloak
+>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,9 +42,9 @@
     @livewireStyles()
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="bg-gray-200 font-family-karla">
+<body class="bg-gray-200 font-family-karla dark:bg-zinc-900 antialiased dark:selection:sick-bg dark:selection:text-black">
     <!-- Topic Nav -->
-    <nav class="charcoal py-3" x-data="{ open: false }">
+    <nav class="p-4 charcoal dark:bg-black py-3" x-data="{ open: false }">
         <div>
             <div class="block md:hidden">
                 <a
@@ -59,62 +65,7 @@
                 >
             </a> <!-- logo end -->
             
-            <div 
-                :class="open ? 'block': 'hidden'" 
-                class="w-full flex-grow md:flex md:items-center md:w-auto lg:col-start-3 lg:col-end-5 mx-auto gap-3"
-            >
-                <div 
-                    x-data="{ open: null }" 
-                    class="w-full flex-grow sm:flex sm:items-center sm:w-auto bg-charcoal"
-                >
-                    <div class="mx-auto flex flex-col items-center justify-center sm:flex-row text-sm font-bold uppercase mt-0 px-6 py-2">
-                    @foreach ($allCategories as $category)
-                            <div 
-                                class="py-2 relative w-full lg:w-auto" 
-                                @mouseenter="open = '{{ $loop->index }}'" 
-                                @mouseleave="open = null"
-                            >
-                                <div class="flex items-center justify-between md:flex-none">
-                                    <a 
-                                        href="{{ route('by-category', ['category'=>$category['slug']]) }}" 
-                                        class="text-white text-lg transition ease-out hover:bg-gray-100 hover:text-black rounded py-2 px-4 mx-2"
-                                    >
-                                        {{ $category['title'] }} 
-                                    </a>
-                                    @if ($category['parent_id'] == null && $category->subCategory()->count() > 0)
-                                        <i :class="open === '{{ $loop->index }}' ? 'fa-chevron-up': 'fa-chevron-down'" 
-                                            class="fas ml-2 text-white font-bold cursor-pointer text-lg" 
-                                            @click="open = open === '{{ $loop->index }}' ? null : '{{ $loop->index }}'">
-                                        </i>
-                                </div>
-
-                                <div x-cloak
-                                    x-show="open === '{{ $loop->index }}'"
-                                    @mouseenter="open = '{{ $loop->index }}'" 
-                                    @mouseleave="open = null" 
-                                    class="lg:w-44 w-full border-2 border-red-600 z-10 bg-black inline-flex flex-col justify-center items-center relative lg:absolute top-full left-0 right-0 p-3"
-                                >
-                                    @foreach($category['subCategory'] as $subCategory)  
-                                        <a 
-                                            href="{{ route('by-category', $subCategory) }}" 
-                                            class="text-white text-center text-lg transition ease-out hover:bg-gray-100 hover:text-black rounded p-2"
-                                        >
-                                            {{ $subCategory->title }}
-                                        </a>
-                                    @endforeach
-
-                                    @else
-                                        <!-- this category has no subcategories -->
-                                    @endif
-                                </div> <!-- subcategories menu end -->
-                            </div> <!-- categories menu end -->
-                        @endforeach
-                            <a href="{{ route('about') }}" class="w-full text-white text-lg transition ease-out hover:bg-gray-100 hover:text-black rounded p-2 ml-7 md:ml-0">
-                                About
-                            </a>
-                    </div>
-                </div>
-            </div>
+            <x-categories-menu :allCategories="$allCategories"></x-categories-menu>
             
             <div class="lg:col-start-5 flex-col justify-center md:justify-end">
                 <div x-data="{ open: false }" class="flex justify-center lg:justify-end lg:p-0 p-3">
@@ -180,7 +131,7 @@
                 <div class="sm:flex sm:items-center sm:ml-6">
                     <x-dropdown align="custom" width="48">
                         <x-slot name="trigger">
-                            <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
+                            <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 dark:text-white dark:bg-zinc-600 focus:outline-none transition ease-in-out duration-150">
                                 <div>{{ Auth::user()->name }}</div>
 
                                 <div class="ml-1">
@@ -219,14 +170,14 @@
 
     </nav> <!-- navbar end -->
     
-    <div class="container mx-auto py-6 gap-3 grid lg:grid-cols-5">
+    <div class="p-3 container mx-auto py-6 gap-3 grid lg:grid-cols-5">
         {{ $slot }}
     </div>
     
-    <footer class="w-full border-t bg-gray-200 pb-12">
-        <div class="pt-2 text-center text-lg">
+    <footer class="w-full bg-gray-200 pb-12 dark:bg-zinc-900">
+        <div class="pt-2 text-center text-lg dark:text-gray-400">
             Sick Of Metal
-            <p class="text-lg text-gray-600">
+            <p class="text-lg text-gray-700 dark:text-gray-500">
                 {{ \App\Models\TextWidget::getTitle('header') }}
             </p>
         </div>

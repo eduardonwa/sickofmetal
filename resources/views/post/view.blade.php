@@ -5,25 +5,26 @@
             <div class="hover:opacity-75">
                 <img class="w-full object-contain" src="{{ $post->getThumbnail() }}">
             </div>
-            <div class="bg-white flex flex-col justify-start p-6">
+            <div class="bg-white dark:bg-zinc-800 flex flex-col justify-start p-6">
                 @foreach($post->categories as $category)
-                    <a href="category/{{ $category->slug }}" class="text-blue-700 text-sm font-bold uppercase pb-4">
+                    <a href="category/{{ $category->slug }}" class="text-blue-700 dark:text-red-500 font-bold uppercase pb-4">
                         {{ $category->title }}
                     </a>
                 @endforeach
-                <h1 class="text-3xl font-bold hover:text-gray-700 pb-4">
+                <h1 class="text-3xl font-bold hover:text-gray-700 pb-4 dark:text-gray-200 dark:hover:text-white">
                     {{ $post->title }}
                 </h1>
-                <p class="text-sm">
-                    By <span class="font-semibold hover:text-gray-800">
+                <p class="dark:text-gray-200">
+                    By <span class="font-semibold hover:text-gray-700 dark:text-gray-200">
                         {{ $post->user->name }}
-                    </span>, Published on {{ $post->getFormattedDate() }} | {{ $post->human_read_time }}
+                    </span>, {{ $post->getFormattedDate() }} | {{ $post->human_read_time }}
+                    read time
                 </p>
 
                 <livewire:upvote-downvote :post="$post" />
 
                 <div class="border border-gray-700 border-b-2"></div>
-                <div class="my-8 text-lg">
+                <div class="my-8 text-lg dark:text-gray-200">
                     <x-markdown>
                         {!! $post->body !!}
                     </x-markdown>
@@ -34,12 +35,12 @@
                 
                 <div class="w-1/2">
                     @if($prev)
-                        <a href="{{ route('view', $prev) }}" class="block w-full bg-white shadow hover:shadow-md text-left p-6">
-                            <p class="text-lg text-blue-800 font-bold flex items-center">
+                        <a href="{{ route('view', $prev) }}" class="block w-full bg-white dark:bg-zinc-800 shadow hover:shadow-md text-left p-6">
+                            <p class="text-lg text-blue-800 dark:sick-text font-bold flex items-center">
                                 <i class="fas fa-arrow-left pr-1"></i>
                                 Previous
                             </p>
-                            <p class="pt-2">
+                            <p class="pt-2 dark:text-gray-200">
                                 {{ \Illuminate\Support\Str::words($prev->title, 5) }}
                             </p>
                         </a>
@@ -48,10 +49,10 @@
 
                 <div class="w-1/2">
                     @if($next)
-                        <a href="{{ route('view', $next) }}" class="block w-full bg-white shadow hover:shadow-md text-right p-6">
-                            <p class="text-lg text-blue-800 font-bold flex items-center justify-end">
+                        <a href="{{ route('view', $next) }}" class="block w-full bg-white dark:bg-zinc-800 shadow hover:shadow-md text-right p-6">
+                            <p class="text-lg text-blue-800 dark:sick-text font-bold flex items-center justify-end">
                                 Next <i class="fas fa-arrow-right pl-1"></i></p>
-                            <p class="pt-2">
+                            <p class="pt-2 dark:text-gray-200">
                                 {{ \Illuminate\Support\Str::words($next->title, 5) }}
                             </p>
                         </a>

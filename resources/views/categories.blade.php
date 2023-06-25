@@ -8,9 +8,9 @@
                 <div class="overflow-hidden bg-gray-100">
                     <img class="overflow-hidden transform scale-100 hover:scale-150 ease-in-out duration-1000 h-full object-cover" src="{{ $post->getThumbnail() }}" alt="">
                 </div>
-                <div class="h-28 text-center bg-white text-gray-900 p-3">
+                <div class="h-28 text-center bg-white dark:bg-zinc-800 text-gray-900 dark:text-gray-200 p-3">
                     @foreach ($post->categories as $category)
-                    <h1 class="uppercase font-semibold text-blue-700">{{ $category->title }}</h1>
+                    <h1 class="uppercase font-semibold text-red-500">{{ $category->title }}</h1>
                     @endforeach
                     <p class="font-bold">{{ $post->title }}</p>
                     <span class="">By {{ $post->user->name }} • </span>

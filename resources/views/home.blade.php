@@ -1,6 +1,6 @@
 <x-app-layout meta-description="Sick Of Metal blog for the metalhead with rock and heavy metal news and much more">
     <div>
-        <h1 class="rounded-md mx-3 md:mx-0 my-2 text-md p-2 font-bold uppercase bg-black w-max text-center text-white">POPULAR</h1>
+        <h1 class="rounded-md mx-3 md:mx-0 my-2 text-md p-2 font-bold uppercase bg-black dark:bg-zinc-800 w-max text-center text-white">POPULAR</h1>
             @foreach ($popularPosts as $popularPost)
                 <x-post-item :popularPost="$popularPost"></x-post-item>
             @endforeach <!-- popular post column end -->
@@ -28,19 +28,19 @@
             </article>
         </div> <!-- latest post end -->
 
-        <h1 class="rounded-md mx-3 md:mx-0 my-2 text-md p-2 font-bold uppercase bg-black w-max text-center text-white">RECOMMENDED</h1>
+        <h1 class="rounded-md mx-3 md:mx-0 my-2 text-md p-2 font-bold uppercase bg-black dark:bg-zinc-800 w-max text-center text-white">RECOMMENDED</h1>
         <div class="md:gap-x-3 space-y-3 md:space-y-0 md:grid md:grid-cols-[1fr_1fr_1fr]">
             @foreach($recommendedPosts as $recommended)
-                <div class="m-4 md:m-0 bg-white overflow-hidden shadow-md">
+                <div class="m-4 md:m-0 bg-white dark:bg-zinc-800 overflow-hidden shadow-md">
                     <a href="{{ route('view', $recommended) }}" class="h-full flex flex-col">
                         <img class="grow" src="{{ $recommended->getThumbnail() }}">
                         <div class="p-2">
                             @foreach($recommended->categories as $category)
-                            <span class="lg:block md:hidden uppercase font-bold text-sm text-blue-700">
+                            <span class="lg:block md:hidden uppercase font-bold text-red-500">
                                 {{$category->title}}
                             </span>
                             @endforeach
-                            <p class="font-bold hover:text-red-500 lg:text-lg transition ease-in-out">
+                            <p class="hover:text-red-500 dark:text-gray-200 lg:text-lg transition ease-in-out">
                                 {{ $recommended->title }}
                             </p>
                         </div>
@@ -54,23 +54,23 @@
 
     @foreach($categories as $category)
     <div class="mx-4 md:mx-0 md:col-start-2 md:col-end-5">
-        <h3 class="pb-3 uppercase font-bold text-md lg:text-xl text-blue-700">
-            {{ $category->title }}
-        </h3>
-        <div class="p-2 bg-white shadow-md">
+        <div class="p-4 bg-white dark:bg-zinc-800 shadow-md">
+            <h3 class="pb-3 uppercase text-md lg:text-xl font-black dark:text-zinc-400">
+                {{ $category->title }}
+            </h3>
             @foreach($category->publishedPosts()->limit(2)->get() as $post)
                 <a href="{{ route('view', $post) }}">
                     <div class="grid grid-cols-[max-content_1fr] lg:grid-cols-[377px_1fr]">
                         <img class="py-1 w-40 lg:w-full object-cover" src="{{ $post->getThumbnail() }}" alt="">
                             <div class="mx-3">
-                                <p class="text-xl uppercase font-bold text-md transition ease-in-out text-red-600 lg:text-black hover:text-red-600">
+                                <p class="text-xl uppercase font-bold text-md transition ease-in-out dark:text-white text-red-600 lg:text-black hover:text-red-600">
                                     {{ $post->title }}
                                 </p>
                                 </a>
                                 <p class="text-lg">
                                     <x-markdown> {!! $post->shortBody(10) !!} </x-markdown>
                                 </p>
-                                <p class="pt-4">
+                                <p class="pt-4 dark:text-gray-200">
                                     {{ $post->getFormattedDate() }}
                                 </p>
                             </div>
