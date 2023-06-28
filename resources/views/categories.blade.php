@@ -3,7 +3,7 @@
 >
     <div class="space-y-8 lg:space-y-0 gap-6 md:col-start-1 md:col-end-4 lg:col-end-5 lg:grid lg:grid-cols-2 place-items-center">
         @foreach ($posts as $post)
-        <a class="h-full flex flex-col" href="{{ route('view', $post) }}">
+        <a class="p-3 flex flex-col" href="{{ route('view', $post) }}">
             <div class="max-w-lg rounded overflow-hidden shadow-lg flex-col md:flex text-center justify-between h-full">
                 <div class="overflow-hidden bg-gray-100">
                     <img class="h-96 object-cover flex-grow overflow-hidden transform scale-100 hover:scale-150 ease-in-out duration-1000" src="{{ $post->getThumbnail() }}" alt="">

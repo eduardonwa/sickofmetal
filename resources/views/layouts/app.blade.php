@@ -57,7 +57,7 @@
             </div>
         </div> <!-- menu icon -->
 
-        <div class="container mx-auto w-full lg:grid lg:items-center lg:grid-cols-5">
+        <div class="container mx-auto w-full grid lg:items-center lg:grid-cols-5">
             <a class="" href="/">
                 <img
                     class="w-48 mx-auto py-4 lg:col-start-1 lg:col-end-2" 

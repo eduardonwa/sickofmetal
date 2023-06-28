@@ -1,10 +1,12 @@
 <x-app-layout>
-    <section class="flex flex-col px-3 lg:col-start-1 lg:col-end-4">
+    <section class="px-3 col-start-1 col-end-5 w-mx-auto">
+        
         <article class="flex flex-col my-4">
             <!-- Article Image -->
-            <div class="hover:opacity-75">
-                <img class="w-full object-contain" src="{{ $post->getThumbnail() }}">
+            <div class="relative h-0 pb-2/3 sm:pt-1/3 lg:pb-1/3 hover:opacity-75">
+                <img class="absolute inset-0 w-full h-full object-cover" src="{{ $post->getThumbnail() }}">
             </div>
+
             <div class="bg-white dark:bg-zinc-800 flex flex-col justify-start px-3">
                 @foreach($post->categories as $category)
                     <a href="category/{{ $category->slug }}" class="text-red-500 dark:text-red-500 font-bold uppercase py-4">
@@ -67,7 +69,7 @@
         <livewire:comments :post="$post" /> <!-- comments end -->
     
     </section> 
-    <div class="lg:col-start-4 lg:col-end-5">
+    <div class="lg:col-start-5 lg:col-end-6">
         <h1 class="rounded-md mx-3 md:mx-0 my-2 text-md p-2 font-bold uppercase bg-black w-max text-center text-white">POPULAR</h1>
             @foreach ($popularPosts as $popularPost)
                 <x-post-item :popularPost="$popularPost"></x-post-item>

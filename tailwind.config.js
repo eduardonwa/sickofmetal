@@ -15,7 +15,8 @@ export default {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
             spacing: {
-                '2/3': '66.666667%'
+                '1/3': '33.33333%',
+                '2/3': '66.66667%'
             },
             colors: {
                 'charcoal': '#212121',

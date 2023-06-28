@@ -10,12 +10,13 @@ use Illuminate\Support\Str;
 use Filament\Resources\Form;
 use Filament\Resources\Table;
 use Filament\Resources\Resource;
+use FilamentTiptapEditor\TiptapEditor;
+use Filament\Forms\Components\ViewField;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\PostResource\Pages;
+use Spatie\FilamentMarkdownEditor\MarkdownEditor;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\PostResource\RelationManagers;
-use Spatie\FilamentMarkdownEditor\MarkdownEditor;
-use Filament\Forms\Components\ViewField;
 
 class PostResource extends Resource
 {
@@ -44,7 +45,7 @@ class PostResource extends Resource
                         ->required()
                         ->maxLength(2048),
                     ]),
-                    MarkdownEditor::make('body')
+                    TiptapEditor::make('body')
                         ->required(),
                     Forms\Components\TextInput::make('meta_title'),
                     Forms\Components\TextInput::make('meta_description'),
