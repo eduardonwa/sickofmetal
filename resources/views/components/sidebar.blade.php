@@ -12,7 +12,7 @@
         </a>
     </div> <!-- YouTube end -->
 
-    <div class="w-full bg-charcoal lg:bg-white dark:lg:bg-zinc-800 shadow flex flex-col p-6">
+    <div class="w-full bg-charcoal dark:bg-zinc-800 lg:bg-white dark:lg:bg-zinc-800 shadow flex flex-col p-6">
         <p class="text-2xl font-black pb-5 text-gray-100 lg:text-slate-900 dark:lg:text-zinc-400 dark:sick-text">Instagram</p>
         <div class="grid grid-cols-3 gap-3">
             <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=1">

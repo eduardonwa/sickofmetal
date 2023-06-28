@@ -1,16 +1,18 @@
-<x-app-layout meta-description="Sick Of Metal blog for the metalhead with rock and heavy metal news and much more">
+<x-app-layout meta-description="Sick Of Metal, blog for the metalhead with heavy metal news and much more">
     <div>
-        <h1 class="rounded-md mx-3 md:mx-0 my-2 text-md p-2 font-bold uppercase bg-black dark:bg-zinc-800 w-max text-center text-white">POPULAR</h1>
+        <h1 class="rounded-md mx-3 md:mx-0 my-2 text-md p-2 font-bold uppercase bg-black dark:bg-zinc-800 w-max text-center text-white">
+            Latest News
+        </h1>
             @foreach ($popularPosts as $popularPost)
                 <x-post-item :popularPost="$popularPost"></x-post-item>
-            @endforeach <!-- popular post column end -->
-    </div> <!-- popular posts end -->
+            @endforeach <!-- latest news column end -->
+    </div> <!-- latest news end -->
     
     <div class="md:mx-auto md:col-start-2 md:col-end-5 lg:mx-0 row-start-1">
-        <div class="bg-black">
+        <div>
             <article class="relative">
                 <img class="w-full object-cover" src="{{ $latestPost->getThumbnail() }}" alt="">
-                <div class="absolute bottom-0 left-0 right-0 px-4 py-2 bg-gradient-to-t from-black">
+                <div class="absolute bottom-0 left-0 right-0 py-2 bg-gradient-to-t from-black via-black to-transparent p-3">
                     <h1 class="mb-3 uppercase font-bold bg-red-600 mx-1 p-1 w-max text-center text-white">
                         @foreach($latestPost->categories as $category)
                             {{ $category->title }}        
@@ -21,7 +23,7 @@
                             {{ $latestPost->title }}
                         </h3>
                     </a>
-                    <p class="m-1 text-sm text-gray-300">
+                    <p class="m-1 text-gray-300">
                         {!! $latestPost->shortBody(10) !!}
                     </p>
                 </div> <!-- latest post end -->
@@ -54,7 +56,7 @@
 
     @foreach($categories as $category)
     <div class="mx-4 md:mx-0 md:col-start-2 md:col-end-5">
-        <div class="p-4 bg-white dark:bg-zinc-800 shadow-md">
+        <div class="p-4 bg-white dark:bg-transparent dark:lg:bg-zinc-800 shadow-md">
             <h3 class="pb-3 uppercase text-md lg:text-xl font-black dark:text-zinc-400">
                 {{ $category->title }}
             </h3>

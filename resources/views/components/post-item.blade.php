@@ -1,4 +1,4 @@
-<article class="mx-auto px-4 bg-white dark:bg-zinc-800 shadow-md py-3">
+<article class="mx-auto px-4 bg-white dark:bg-transparent dark:lg:bg-zinc-800 shadow-md py-3">
     <div class="md:flex-col w-full">
         <div class="flex-col md:col-span-4 flex">
             @foreach($popularPost->categories as $category)

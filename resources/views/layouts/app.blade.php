@@ -44,7 +44,7 @@
 </head>
 <body class="bg-gray-200 font-family-karla dark:bg-zinc-900 antialiased dark:selection:sick-bg dark:selection:text-black">
     <!-- Topic Nav -->
-    <nav class="p-4 charcoal dark:bg-black py-3" x-data="{ open: false }">
+    <nav class=" charcoal dark:bg-black py-3" x-data="{ open: false }">
         <div>
             <div class="block md:hidden">
                 <a
@@ -170,7 +170,7 @@
 
     </nav> <!-- navbar end -->
     
-    <div class="p-3 container mx-auto py-6 gap-3 lg:grid lg:grid-cols-5">
+    <div class="container mx-auto py-6 gap-3 grid lg:grid-cols-5">
         {{ $slot }}
     </div>
     
