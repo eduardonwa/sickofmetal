@@ -1,5 +1,5 @@
 <x-app-layout>
-    <section class="px-3 col-start-1 col-end-5 w-mx-auto">
+    <section class="px-3 lg:col-start-2 lg:col-end-5 w-mx-auto">
         
         <article class="flex flex-col my-4">
             <!-- Article Image -->
@@ -40,7 +40,7 @@
                 <div class="w-1/2">
                     @if($prev)
                         <a href="{{ route('view', $prev) }}" class="block w-full bg-white dark:bg-zinc-800 shadow hover:shadow-md text-left p-6">
-                            <p class="text-lg text-blue-800 dark:sick-text font-bold flex items-center">
+                            <p class="text-lg text-sick dark:sick-text font-bold flex items-center">
                                 <i class="fas fa-arrow-left pr-1"></i>
                                 Previous
                             </p>
@@ -54,7 +54,7 @@
                 <div class="w-1/2">
                     @if($next)
                         <a href="{{ route('view', $next) }}" class="block w-full bg-white dark:bg-zinc-800 shadow hover:shadow-md text-right p-6">
-                            <p class="text-lg text-blue-800 dark:sick-text font-bold flex items-center justify-end">
+                            <p class="text-lg text-sick dark:sick-text font-bold flex items-center justify-end">
                                 Next <i class="fas fa-arrow-right pl-1"></i></p>
                             <p class="pt-2 dark:text-gray-200">
                                 {{ \Illuminate\Support\Str::words($next->title, 5) }}
@@ -70,7 +70,9 @@
     
     </section> 
     <div class="lg:col-start-5 lg:col-end-6">
-        <h1 class="rounded-md mx-3 md:mx-0 my-2 text-md p-2 font-bold uppercase bg-black w-max text-center text-white">POPULAR</h1>
+        <h1 class="rounded-md mx-3 md:mx-0 my-2 text-md p-2 font-bold uppercase bg-black w-max text-center text-white">
+            Latest News
+        </h1>
             @foreach ($popularPosts as $popularPost)
                 <x-post-item :popularPost="$popularPost"></x-post-item>
             @endforeach <!-- popular post column end -->
