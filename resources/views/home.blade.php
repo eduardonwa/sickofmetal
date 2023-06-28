@@ -63,21 +63,19 @@
                     <div class="grid grid-cols-[max-content_1fr] lg:grid-cols-[377px_1fr]">
                         <img class="py-1 w-40 lg:w-full object-cover" src="{{ $post->getThumbnail() }}" alt="">
                             <div class="mx-3">
-                                <p class="text-xl uppercase font-bold text-md transition ease-in-out dark:text-white text-red-600 lg:text-black hover:text-red-600">
+                                <p class="pb-3 text-xl uppercase font-bold text-md transition ease-in-out dark:text-white text-red-600 lg:text-black hover:text-red-600 dark:hover:text-red-600">
                                     {{ $post->title }}
                                 </p>
-                                </a>
-                                <p class="text-lg">
-                                    <x-markdown> {!! $post->shortBody(10) !!} </x-markdown>
-                                </p>
-                                <p class="pt-4 dark:text-gray-200">
+                </a> <!-- route link end -->
+
+                                <x-markdown> {!! $post->shortBody(10) !!} </x-markdown>
+                                <p class="dark:text-gray-200">
                                     {{ $post->getFormattedDate() }}
                                 </p>
-                            </div>
-                    </div>
-                
+                            </div> <!-- 4th div end -->
+                    </div> <!-- 3rd div end -->             
             @endforeach
-        </div>
+        </div> <!-- 2nd div end -->
     </div> <!-- categories end -->
     @endforeach
 
