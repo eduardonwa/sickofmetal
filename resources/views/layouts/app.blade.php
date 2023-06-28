@@ -170,7 +170,7 @@
 
     </nav> <!-- navbar end -->
     
-    <div class="p-3 container mx-auto py-6 gap-3 grid lg:grid-cols-5">
+    <div class="p-3 container mx-auto py-6 gap-3 lg:grid lg:grid-cols-5">
         {{ $slot }}
     </div>
     
@@ -182,7 +182,7 @@
             </p>
         </div>
     </footer>
-
+    @stack('scripts')
     <script>
         function getCarouselData() {
             return {

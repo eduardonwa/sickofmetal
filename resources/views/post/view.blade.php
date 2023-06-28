@@ -5,7 +5,7 @@
             <div class="hover:opacity-75">
                 <img class="w-full object-contain" src="{{ $post->getThumbnail() }}">
             </div>
-            <div class="bg-white dark:bg-zinc-800 flex flex-col justify-start p-6">
+            <div class="bg-white dark:bg-zinc-800 flex flex-col justify-start px-3">
                 @foreach($post->categories as $category)
                     <a href="category/{{ $category->slug }}" class="text-blue-700 dark:text-red-500 font-bold uppercase pb-4">
                         {{ $category->title }}
@@ -24,11 +24,13 @@
                 <livewire:upvote-downvote :post="$post" />
 
                 <div class="border border-gray-700 border-b-2"></div>
-                <div class="my-8 text-lg dark:text-gray-200">
+
+                <div class="my-8 text-lg dark:text-gray-200 aspect-auto">
                     <x-markdown>
                         {!! $post->body !!}
                     </x-markdown>
                 </div>
+
             </div>
             
             <div class="lg:col-start-1 lg:col-end-5 w-full flex pt-6">
