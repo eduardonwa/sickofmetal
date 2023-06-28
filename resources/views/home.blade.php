@@ -67,8 +67,7 @@
                                     {{ $post->title }}
                                 </p>
                 </a> <!-- route link end -->
-
-                                <x-markdown> {!! $post->shortBody(10) !!} </x-markdown>
+                                <x-markdown class="dark:text-yellow-100"> {{ $post->shortBody(10) }} </x-markdown>
                                 <p class="dark:text-gray-200">
                                     {{ $post->getFormattedDate() }}
                                 </p>

@@ -7,7 +7,7 @@
             </div>
             <div class="bg-white dark:bg-zinc-800 flex flex-col justify-start px-3">
                 @foreach($post->categories as $category)
-                    <a href="category/{{ $category->slug }}" class="text-blue-700 dark:text-red-500 font-bold uppercase pb-4">
+                    <a href="category/{{ $category->slug }}" class="text-red-500 dark:text-red-500 font-bold uppercase py-4">
                         {{ $category->title }}
                     </a>
                 @endforeach
