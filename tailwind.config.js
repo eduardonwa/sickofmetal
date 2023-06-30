@@ -23,6 +23,10 @@ export default {
             },
             border: ['focus'],
         },
+        screens: {
+            macbook: '1280px',
+            ...defaultTheme.screens,
+          },
     },
 
     plugins: [forms],

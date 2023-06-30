@@ -51,6 +51,11 @@ class Post extends Model
         return Str::words(strip_tags($this->body), $words);
     }
 
+    public function shortTitle($words = 8): string
+    {
+        return Str::words(strip_tags($this->title), $words);
+    }
+
     public function getThumbnail()
     {
         if(str_starts_with($this->thumbnail, 'http')) {

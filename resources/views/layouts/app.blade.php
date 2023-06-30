@@ -44,7 +44,7 @@
 </head>
 <body class="bg-gray-200 font-family-karla dark:bg-zinc-900 antialiased dark:selection:sick-bg dark:selection:text-black">
     <!-- Topic Nav -->
-    <nav class=" charcoal dark:bg-black py-3" x-data="{ open: false }">
+    <nav class="charcoal dark:bg-black py-3" x-data="{ open: false }">
         <div>
             <div class="block md:hidden">
                 <a
@@ -57,7 +57,7 @@
             </div>
         </div> <!-- menu icon -->
 
-        <div class="container mx-auto w-full grid lg:items-center lg:grid-cols-5">
+        <div class="macbook:px-4 container mx-auto w-full grid lg:items-center lg:grid-cols-5">
             <a class="" href="/">
                 <img
                     class="w-48 mx-auto py-4 lg:col-start-1 lg:col-end-2" 
@@ -170,7 +170,7 @@
 
     </nav> <!-- navbar end -->
     
-    <div class="container mx-auto py-6 gap-3 grid lg:grid-cols-5">
+    <div class="macbook:p-3 container mx-auto py-6 gap-3 grid lg:grid-cols-5">
         {{ $slot }}
     </div>
     
@@ -182,7 +182,9 @@
             </p>
         </div>
     </footer>
+
     @stack('scripts')
+    
     <script>
         function getCarouselData() {
             return {
