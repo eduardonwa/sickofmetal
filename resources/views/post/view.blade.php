@@ -4,7 +4,7 @@
         <article class="flex flex-col my-4">
             <!-- Article Image -->
             <div class="relative h-0 pb-2/3 sm:pt-1/3 lg:pb-1/3 hover:opacity-75">
-                <img class="absolute inset-0 w-full h-full object-cover" src="{{ $post->getThumbnail() }}">
+                <img class="absolute inset-0 w-full h-full object-top object-cover" src="{{ $post->getThumbnail() }}">
             </div>
 
             <div class="bg-white dark:bg-zinc-800 flex flex-col justify-start px-3">
