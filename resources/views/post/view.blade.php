@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-layout>    
     <section class="px-3 lg:col-start-2 lg:col-end-5 w-mx-auto">
         
         <article class="flex flex-col my-4">
@@ -77,5 +77,4 @@
                 <x-post-item :popularPost="$popularPost"></x-post-item>
             @endforeach <!-- popular post column end -->
     </div> <!-- popular posts end -->
-    
 </x-app-layout>
