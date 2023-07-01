@@ -38,7 +38,7 @@
             <div class="lg:col-start-1 lg:col-end-5 w-full flex pt-6">
                 
                 <div class="w-1/2">
-                    @if($prev)
+                    @if($prev ?? false)
                         <a href="{{ route('view', $prev) }}" class="block w-full bg-white dark:bg-zinc-800 shadow hover:shadow-md text-left p-6">
                             <p class="text-lg text-sick dark:sick-text font-bold flex items-center">
                                 <i class="fas fa-arrow-left pr-1"></i>
@@ -52,7 +52,7 @@
                 </div>
 
                 <div class="w-1/2">
-                    @if($next)
+                    @if($next ?? false)
                         <a href="{{ route('view', $next) }}" class="block w-full bg-white dark:bg-zinc-800 shadow hover:shadow-md text-right p-6">
                             <p class="text-lg text-sick dark:sick-text font-bold flex items-center justify-end">
                                 Next <i class="fas fa-arrow-right pl-1"></i></p>
@@ -70,11 +70,13 @@
     
     </section> 
     <div class="lg:col-start-5 lg:col-end-6">
-        <h1 class="rounded-md mx-3 md:mx-0 my-2 text-md p-2 font-bold uppercase bg-black w-max text-center text-white">
-            Latest News
-        </h1>
+        @if ($popularPosts ?? false)
+            <h1 class="rounded-md mx-3 md:mx-0 my-2 text-md p-2 font-bold uppercase bg-black w-max text-center text-white">
+                Latest News
+            </h1>
             @foreach ($popularPosts as $popularPost)
                 <x-post-item :popularPost="$popularPost"></x-post-item>
             @endforeach <!-- popular post column end -->
+        @endif
     </div> <!-- popular posts end -->
 </x-app-layout>

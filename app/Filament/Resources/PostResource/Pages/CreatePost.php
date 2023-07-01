@@ -31,11 +31,11 @@ class CreatePost extends CreateRecord
 
     protected function getPreviewModalView(): ?string
     {
-        return 'post.preview';
+        return 'post.view';
     }
 
     protected function getPreviewModalDataRecordKey(): ?string
-    {   
-        return 'preview';
+    {
+        return 'post';
     }
 }
