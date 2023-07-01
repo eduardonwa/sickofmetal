@@ -14,10 +14,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Post extends Model
 {
     use HasFactory;
-    
+
     protected $fillable = [
         'title',
         'slug',
+        'caption',
         'thumbnail',
         'body',
         'active',
@@ -42,7 +43,7 @@ class Post extends Model
     }
 
     public function getFormattedDate()
-    {   
+    {
         return $this->published_at->format('F jS Y');
     }
 

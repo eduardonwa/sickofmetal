@@ -44,6 +44,7 @@ class PostResource extends Resource
                     Forms\Components\TextInput::make('slug')
                         ->required()
                         ->maxLength(2048),
+                    Forms\Components\TextInput::make('caption'),
                     ]),
                     TiptapEditor::make('body')
                         ->required(),
@@ -90,14 +91,14 @@ class PostResource extends Resource
                 Tables\Actions\DeleteBulkAction::make(),
             ])->defaultSort('created_at', 'desc');
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [

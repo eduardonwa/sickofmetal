@@ -1,42 +1,48 @@
-<x-app-layout>    
+<x-app-layout>
     <section class="px-3 lg:col-start-2 lg:col-end-5 w-mx-auto">
-        
+
         <article class="flex flex-col my-4">
             <!-- Article Image -->
+            <div class="bg-white dark:bg-zinc-800 flex flex-col justify-start px-8 lg:px-16 py-2">
+                @foreach($post->categories as $category)
+                    <a href="category/{{ $category->slug }}" class="text-lg text-red-500 dark:text-red-500 font-bold uppercase py-4">
+                        {{ $category->title }}
+                    </a>
+                @endforeach
+                <h1 class="text-3xl font-bold dark:text-white">
+                    {{ $post->title }}
+                </h1>
+                <span class="dark:text-gray-200 text-gray-700 py-4">
+                    {{ $post->caption }}
+                </span>
+                <p class="dark:text-gray-200 pb-4 text-sm flex-col">
+                    By <span class="font-semibold hover:text-gray-700 dark:text-gray-200">
+                        {{ $post->user->name }}
+                    </span> <br>
+
+                    <span>
+                        {{ $post->getFormattedDate() }}, {{ $post->human_read_time }} read time
+                    </span>
+                </p>
+            </div>
+
             <div class="relative h-0 pb-2/3 sm:pt-1/3 lg:pb-1/3 hover:opacity-75">
                 <img class="absolute inset-0 w-full h-full object-top object-cover" src="{{ $post->getThumbnail() }}">
             </div>
 
             <div class="bg-white dark:bg-zinc-800 flex flex-col justify-start px-3">
-                @foreach($post->categories as $category)
-                    <a href="category/{{ $category->slug }}" class="text-red-500 dark:text-red-500 font-bold uppercase py-4">
-                        {{ $category->title }}
-                    </a>
-                @endforeach
-                <h1 class="text-3xl font-bold hover:text-gray-700 pb-4 dark:text-gray-200 dark:hover:text-white">
-                    {{ $post->title }}
-                </h1>
-                <p class="dark:text-gray-200">
-                    By <span class="font-semibold hover:text-gray-700 dark:text-gray-200">
-                        {{ $post->user->name }}
-                    </span>, {{ $post->getFormattedDate() }} | {{ $post->human_read_time }}
-                    read time
-                </p>
-
-                <livewire:upvote-downvote :post="$post" />
-
-                <div class="border border-gray-700 border-b-2"></div>
-
                 <div class="my-8 text-lg dark:text-gray-200 aspect-auto">
-                    <x-markdown>
+                    <x-markdown class="px-4">
                         {!! $post->body !!}
                     </x-markdown>
                 </div>
-
             </div>
-            
+
+            <div class="flex justify-center items-center p-3 mx-auto container text-center">
+                <livewire:upvote-downvote :post="$post" />
+            </div>
+
             <div class="lg:col-start-1 lg:col-end-5 w-full flex pt-6">
-                
                 <div class="w-1/2">
                     @if($prev ?? false)
                         <a href="{{ route('view', $prev) }}" class="block w-full bg-white dark:bg-zinc-800 shadow hover:shadow-md text-left p-6">
@@ -62,13 +68,12 @@
                         </a>
                     @endif
                 </div>
-                
             </div> <!-- prev and next end -->
         </article> <!-- article, prev and next end -->
-        
+
         <livewire:comments :post="$post" /> <!-- comments end -->
-    
-    </section> 
+
+    </section>
     <div class="lg:col-start-5 lg:col-end-6">
         @if ($popularPosts ?? false)
             <h1 class="rounded-md mx-3 md:mx-0 my-2 text-md p-2 font-bold uppercase bg-black w-max text-center text-white">

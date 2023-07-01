@@ -7,7 +7,7 @@
                 <x-post-item :popularPost="$popularPost"></x-post-item>
             @endforeach <!-- latest news column end -->
     </div> <!-- latest news end -->
-    
+
     <div class="md:mx-auto md:col-start-2 md:col-end-5 lg:mx-0 row-start-1">
         <div>
             <article class="relative lg:h-0 md:p-0 pb-1/3 lg:p-1/3">
@@ -15,7 +15,7 @@
                 <div class="absolute bottom-0 left-0 right-0 py-2 bg-gradient-to-t from-black via-black to-transparent p-3">
                     <h1 class="mb-3 uppercase font-bold bg-red-600 mx-1 p-1 w-max text-center text-white">
                         @foreach($latestPost->categories as $category)
-                            {{ $category->title }}        
+                            {{ $category->title }}
                         @endforeach
                     </h1>
                     <a href="{{ route('view', $latestPost) }}">
@@ -24,7 +24,7 @@
                         </h3>
                     </a>
                     <p class="m-1 text-gray-300">
-                        {!! $latestPost->shortBody(10) !!}
+                        {{ $latestPost->caption }}
                     </p>
                 </div> <!-- latest post end -->
             </article>
@@ -44,7 +44,7 @@
             @endforeach
         </div> <!-- recommended post end -->
     </div> <!-- latest and recommended posts wrapper end -->
-    
+
     <div class="md:col-start-2 md:col-end-5 lg:mx-0">
         <div class="w-full bg-charcoal dark:bg-zinc-800 dark:lg:bg-zinc-800 shadow flex flex-col lg:flex p-6">
             <p class="text-2xl font-black pb-5 italic text-gray-100 dark:sick-text">
@@ -53,7 +53,7 @@
             <div class="shadow-xl">
                 <x-youtube/>
             </div>
-        </div> 
+        </div>
     </div> <!-- YouTube end -->
 
     <x-sidebar/>
@@ -73,14 +73,14 @@
                                     {{ $post->title }}
                                 </p>
                 </a> <!-- route link end -->
-                                <x-markdown class="hidden md:block dark:text-gray-100"> 
-                                    {{ $post->shortBody(10) }} 
+                                <x-markdown class="hidden md:block dark:text-gray-100">
+                                    {{ $post->shortBody(10) }}
                                 </x-markdown>
                                 <p class="hidden lg:block dark:text-gray-200">
                                     {{ $post->getFormattedDate() }}
                                 </p>
                             </div> <!-- 4th div end -->
-                    </div> <!-- 3rd div end -->             
+                    </div> <!-- 3rd div end -->
             @endforeach
         </div> <!-- 2nd div end -->
     </div> <!-- categories end -->
