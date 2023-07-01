@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html 
+<html
     lang="{{ str_replace('_', '-', app()->getLocale()) }}"
     x-data="{isDarkMode : localStorage.getItem('dark') === 'true'}"
     x-init="$watch('isDarkMode', val => localStorage.setItem('dark', val))"
@@ -45,6 +45,17 @@
     @livewireStyles()
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8HXRBBFCV4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8HXRBBFCV4');
+</script>
+
 <body class="bg-gray-200 font-family-karla dark:bg-zinc-900 antialiased dark:selection:sick-bg dark:selection:text-black">
     <!-- Topic Nav -->
     <nav class="charcoal dark:bg-black py-3" x-data="{ open: false }">
@@ -63,16 +74,16 @@
         <div class="macbook:px-4 container mx-auto w-full grid lg:items-center lg:grid-cols-5">
             <a class="" href="/">
                 <img
-                    class="w-48 mx-auto py-4 lg:col-start-1 lg:col-end-2" 
+                    class="w-48 mx-auto py-4 lg:col-start-1 lg:col-end-2"
                     src="{{ \App\Models\TextWidget::getImage('header') }}"
                 >
             </a> <!-- logo end -->
-            
+
             <x-categories-menu :allCategories="$allCategories"></x-categories-menu>
-            
+
             <div class="lg:col-start-5 flex-col justify-center md:justify-end">
                 <div x-data="{ open: false }" class="flex justify-center lg:justify-end lg:p-0 p-3">
-                    <button @click="open = true" 
+                    <button @click="open = true"
                             type="button"
                             class="hover:bg-red-600 hover:text-black rounded-md transition ease-in-out p-3"
                     >
@@ -81,7 +92,7 @@
                         </svg>
                     </button>
                     <!-- modal -->
-                    <div 
+                    <div
                         x-show="open"
                         x-cloak
                         @keydown.escape.prevent.stop="open = false"
@@ -94,7 +105,7 @@
                         <!-- overlay -->
                         <div class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm">
                         <!-- panel -->
-                            <div 
+                            <div
                                 @click="open = false"
                                 class="relative top-28 p-3 h-full w-full flex items-start justify-center"
                             >
@@ -172,11 +183,11 @@
         </div> <!-- desktop menu end -->
 
     </nav> <!-- navbar end -->
-    
+
     <div class="macbook:p-3 container mx-auto py-6 gap-3 grid lg:grid-cols-5">
         {{ $slot }}
     </div>
-    
+
     <footer class="w-full bg-gray-200 pb-12 dark:bg-zinc-900">
         <div class="pt-2 text-center text-lg dark:text-gray-400">
             Sick Of Metal
@@ -187,7 +198,7 @@
     </footer>
 
     @stack('scripts')
-    
+
     <script>
         function getCarouselData() {
             return {
