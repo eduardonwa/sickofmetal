@@ -36,11 +36,11 @@
                         {!! $post->body !!}
                     </x-markdown>
                 </div>
-            </div>
+            </div> <!-- body -->
 
             <div class="flex justify-center items-center p-3 mx-auto container text-center">
                 <livewire:upvote-downvote :post="$post" />
-            </div>
+            </div> <!-- likes, dislikes end -->
 
             <div class="lg:col-start-1 lg:col-end-5 w-full flex pt-6">
                 <div class="w-1/2">

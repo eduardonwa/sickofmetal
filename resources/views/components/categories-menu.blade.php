@@ -13,7 +13,7 @@
                     @mouseenter="open = '{{ $loop->index }}'"
                     @mouseleave="open = null"
                 >
-                    <div class="flex items-center justify-between md:flex-none">
+                    <div class="flex items-center justify-between">
                         <a
                             class="text-white text-lg transition ease-out hover:bg-gray-100 hover:text-black rounded py-2 px-4 mx-2"
                             href="{{ route('by-category', ['category'=>$category['slug']]) }}"
@@ -21,11 +21,12 @@
                             {{ $category['title'] }}
                         </a>
                         @if ($category['parent_id'] == null && $category->subCategory()->count() > 0)
-                        <i :class="open === '{{ $loop->index }}' ? 'fa-chevron-up': 'fa-chevron-down'"
-                            class="fas ml-2 text-white font-bold cursor-pointer text-lg"
-                            @click="open = open == '{{ $loop->index }}' ? null : '{{ $loop->index }}'">
-                        </i>
+                        <span :class="open === '{{ $loop->index }}' ? '+': '-'"
+                            class="mx-2 fas text-white font-bold cursor-pointer text-2xl"
+                            @click="open = open === '{{ $loop->index }}' ? null : '{{ $loop->index }}'">
+                        </span>
                     </div>
+
                     <div
                         x-cloak
                         x-transition:enter="transition ease-out duration-200"
