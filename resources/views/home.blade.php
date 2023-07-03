@@ -12,14 +12,14 @@
         <div>
             <article class="relative lg:h-0 md:p-0 pb-1/3 lg:p-1/3">
                 <img class="relative lg:absolute lg:inset-0 w-full lg:h-full lg:object-top object-cover" src="{{ $latestPost->getThumbnail() }}" alt="">
-                <div class="absolute bottom-0 left-0 right-0 py-2 bg-gradient-to-t from-black via-black to-transparent p-3">
+                <div class="absolute bottom-0 left-0 right-0 py-2 bg-gradient-to-t from-black via-zinc-700 to-transparent p-16 pb-5">
                     <h1 class="mb-3 uppercase font-bold bg-red-600 mx-1 p-1 w-max text-center text-white">
                         @foreach($latestPost->categories as $category)
                             {{ $category->title }}
                         @endforeach
                     </h1>
                     <a href="{{ route('view', $latestPost) }}">
-                        <h3 class="text-2xl text-white font-bold m-1 transition ease-out hover:text-gray-300">
+                        <h3 class="text-3xl text-white font-bold m-1 transition ease-out hover:text-gray-300">
                             {{ $latestPost->title }}
                         </h3>
                     </a>

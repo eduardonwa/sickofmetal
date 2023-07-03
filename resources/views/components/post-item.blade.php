@@ -16,5 +16,4 @@
             </p> -->
         </div>
     </div>
-    <div class="hidden md:block border dark:border-gray-400 border-gray-200 mt-2"></div> <!-- popular post end -->
-</article> <!-- latest news end --> 
+</article> <!-- latest news end -->
