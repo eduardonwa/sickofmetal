@@ -24,13 +24,13 @@ width: 100% !important;
 }
 </style>
 </head>
-<body>
+<body class="bg-black">
 
 <table class="wrapper" width="100%" cellpadding="0" cellspacing="0" role="presentation">
 <tr>
 <td align="center">
 <table class="content" width="100%" cellpadding="0" cellspacing="0" role="presentation">
-{{ $header ?? '' }}
+<img src="https://i.imgur.com/mc3Y49E.png" class="content-cell" alt="SickOfMetal Logo">
 
 <!-- Email Body -->
 <tr>

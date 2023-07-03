@@ -1,5 +1,5 @@
 <x-app-layout meta-description="Sick Of Metal, blog for the metalhead with heavy metal news and much more">
-    <div>
+    <div class="">
         <h1 class="rounded-md mx-3 md:mx-0 my-2 text-md p-2 font-bold uppercase bg-black dark:bg-zinc-800 w-max text-center text-white">
             Latest News
         </h1>
@@ -8,11 +8,11 @@
             @endforeach <!-- latest news column end -->
     </div> <!-- latest news end -->
 
-    <div class="md:mx-auto md:col-start-2 md:col-end-5 lg:mx-0 row-start-1">
+    <div class="md:mx-auto md:col-start-2 md:col-end-5 lg:mx-0 row-start-1 lg:p-6">
         <div>
             <article class="relative lg:h-0 md:p-0 pb-1/3 lg:p-1/3">
                 <img class="relative lg:absolute lg:inset-0 w-full lg:h-full lg:object-top object-cover" src="{{ $latestPost->getThumbnail() }}" alt="">
-                <div class="absolute bottom-0 left-0 right-0 py-2 bg-gradient-to-t from-black to-transparent p-16 pb-5">
+                <div class="absolute bottom-0 left-0 right-0 py-2 bg-gradient-to-t from-black to-transparent lg:p-16 p-3 lg:pb-5">
                     <h1 class="mb-3 uppercase font-bold bg-red-600 mx-1 p-1 w-max text-center text-white">
                         @foreach($latestPost->categories as $category)
                             {{ $category->title }}
