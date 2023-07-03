@@ -37,12 +37,6 @@
         }
 
         [x-cloak] { display: none !important; }
-
-        @media (hover: hover) {
-            .hoverable:hover .subcategories {
-                display: block;
-            }
-        }
     </style>
 
     <!-- Font Awesome -->
