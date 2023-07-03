@@ -25,7 +25,6 @@
                         <span :class="open === '{{ $loop->index }}' ? 'w-6 h-6 rounded-full bg-white': 'w-6 h-6 rounded-full border'"
                             class="mx-2 text-transparent font-bold cursor-pointer text-2xl lg:hidden antialiased"
                             @click="open = open === '{{ $loop->index }}' ? null : '{{ $loop->index }}'">
-                            +
                         </span>
                     </div>
 

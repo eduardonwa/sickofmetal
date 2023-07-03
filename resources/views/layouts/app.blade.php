@@ -137,7 +137,6 @@
                 </div>
             </div> <!-- search and auth end -->
         </div> <!-- desktop menu end -->
-
     </nav> <!-- navbar end -->
 
     <div class="macbook:p-3 container mx-auto py-6 gap-3 grid lg:grid-cols-5">
