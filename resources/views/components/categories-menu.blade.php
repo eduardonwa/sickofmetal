@@ -10,8 +10,7 @@
         @foreach ($allCategories as $category)
                 <div
                     class="py-2 relative w-full lg:w-auto"
-                    @mouseenter="open = '{{ $loop->index }}'"
-                    @mouseleave="open = null"
+                    @click="open != open"
                 >
                     <div class="flex items-center justify-between">
                         <a
@@ -21,10 +20,10 @@
                             {{ $category['title'] }}
                         </a>
                         @if ($category['parent_id'] == null && $category->subCategory()->count() > 0)
-                        <span :class="open === '{{ $loop->index }}' ? '+': '-'"
+                        <i :class="open === '{{ $loop->index }}' ? 'fa-minus': 'fa-plus'"
                             class="mx-2 fas text-white font-bold cursor-pointer text-2xl"
                             @click="open = open === '{{ $loop->index }}' ? null : '{{ $loop->index }}'">
-                        </span>
+                        </i>
                     </div>
 
                     <div
