@@ -34,7 +34,7 @@
 
             <div class="bg-white dark:bg-zinc-800 flex flex-col justify-start px-3">
                 <div class="my-8 text-lg dark:text-gray-200 aspect-auto">
-                    <x-markdown class="px-4">
+                    <x-markdown class="lg:px-28">
                         {!! $post->body !!}
                     </x-markdown>
                 </div>
