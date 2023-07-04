@@ -5,7 +5,9 @@
             <!-- Article Image -->
             <div class="bg-white dark:bg-zinc-800 flex flex-col justify-start px-8 lg:px-16 py-2">
                 @foreach($post->categories as $category)
-                    <a href="category/{{ $category->slug }}" class="text-lg text-red-500 dark:text-red-500 font-bold uppercase py-4">
+                    <a
+                        href="category/{{ $category->slug }}"
+                        class="text-lg text-red-500 dark:text-red-500 font-bold uppercase py-4">
                         {{ $category->title }}
                     </a>
                 @endforeach

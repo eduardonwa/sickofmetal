@@ -11,6 +11,9 @@ export default {
 
     theme: {
         extend: {
+            gridTemplateColumns: {
+                'auto-fit-100': 'repeat(auto-fit, minmax(1fr, 1fr))',
+            },
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
