@@ -1,7 +1,7 @@
 <!-- Sidebar Section -->
 <aside class="md:flex md:col-start-2 md:col-end-5 lg:flex-col lg:mx-auto lg:row-start-1 lg:col-start-5 lg:col-end-6">
-    <div class="w-full bg-charcoal dark:bg-zinc-800 lg:bg-white dark:lg:bg-zinc-800 shadow flex flex-col p-6">
-        <p class="text-2xl font-black pb-5 text-gray-100 lg:text-slate-900 dark:lg:text-zinc-400 dark:sick-text">Instagram</p>
+    <div class="w-full bg-charcoal dark:bg-zinc-900 lg:bg-white dark:lg:bg-zinc-900 shadow flex flex-col p-6">
+        <p class="text-2xl font-black pb-5 text-gray-100 lg:text-slate-900 dark:lg:text-zinc-400 dark:lg:sick-text">Instagram</p>
         <div class="grid grid-cols-3 gap-3">
             <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=1">
             <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=2">

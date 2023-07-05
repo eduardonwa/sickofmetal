@@ -1,6 +1,6 @@
 <x-app-layout meta-description="Sick Of Metal, blog for the metalhead with heavy metal news and much more">
-    <div class="">
-        <h1 class="rounded-md mx-3 md:mx-0 my-2 text-md p-2 font-bold uppercase bg-black dark:bg-zinc-800 w-max text-center text-white">
+    <div>
+        <h1 class="mx-3 md:mx-0 my-2 text-3xl p-2 font-bold italic w-max text-center dark:text-white">
             Latest News
         </h1>
             @foreach ($popularPosts as $popularPost)
@@ -30,13 +30,17 @@
             </article>
         </div> <!-- latest post end -->
 
-        <h1 class="rounded-md mx-3 md:mx-0 my-2 text-md p-2 font-bold uppercase bg-black dark:bg-zinc-800 w-max text-center text-white">RECOMMENDED</h1>
+        <h1 class="mx-3 md:mx-0 my-2 text-2xl p-2 font-bold w-max text-center dark:text-white">
+            Suggested
+        </h1>
         <div class="md:gap-x-3 space-y-3 md:space-y-0 md:grid md:grid-cols-[1fr_1fr_1fr]">
             @foreach($recommendedPosts as $recommended)
-                <div class="relative h-auto pb-2/3 sm:pt-1/3 lg:pb-1/3 m-4 md:m-0 bg-white dark:bg-zinc-800 overflow-hidden shadow-md">
+                <div class="m-4 md:m-0 bg-white dark:bg-zinc-800 overflow-hidden shadow-md">
                     <a href="{{ route('view', $recommended) }}" class="h-full flex flex-col">
-                        <img class="absolute w-full h-full inset-0 object-cover grow" src="{{ $recommended->getThumbnail() }}">
-                        <p class="lg:h-24 w-full inset-x-0 bottom-0 p-2 absolute text-gray-200 font-bold bg-opacity-50 backdrop-blur-sm bg-black hover:text-red-500 dark:text-gray-200 lg:text-lg transition ease-in-out">
+                        <div class="relative h-0 pb-2/3 sm:pt-1/3 lg:pb-1/3">
+                            <img class="absolute w-full h-full inset-0 object-cover object-top" src="{{ $recommended->getThumbnail() }}">
+                        </div>
+                        <p class="h-full w-full p-2 text-gray-200 font-bold bg-black dark:hover:text-red-500 hover:text-red-500 dark:text-gray-200 lg:text-md transition ease-in-out">
                             {{ $recommended->shortTitle() }}
                         </p>
                     </a>
@@ -46,8 +50,8 @@
     </div> <!-- latest and recommended posts wrapper end -->
 
     <div class="md:col-start-2 md:col-end-5 lg:mx-0">
-        <div class="w-full bg-charcoal dark:bg-zinc-800 dark:lg:bg-zinc-800 shadow flex flex-col lg:flex p-6">
-            <p class="text-2xl font-black pb-5 italic text-gray-100 dark:sick-text">
+        <div class="w-full bg-charcoal dark:bg-zinc-900 dark:lg:bg-zinc-900 shadow flex flex-col lg:flex p-6">
+            <p class="text-2xl font-black pb-5 text-gray-100 dark:sick-text">
                 {{ \App\Models\TextWidget::getTitle('youtube-sidebar') }}
             </p>
             <div class="shadow-xl">
@@ -60,30 +64,33 @@
 
     @foreach($categories as $category)
     <div class="mx-4 md:mx-0 md:col-start-2 md:col-end-5">
-        <div class="p-4 bg-white dark:bg-transparent dark:lg:bg-zinc-800 shadow-md">
-            <h3 class="pb-3 uppercase text-md lg:text-2xl font-black dark:text-zinc-400">
+        <div class="p-3 bg-white dark:bg-transparent dark:lg:bg-zinc-900 shadow-md">
+            <h3 class="pb-3 text-md lg:text-xl font-black dark:text-zinc-400">
                 {{ $category->title }}
             </h3>
             @foreach($category->publishedPosts()->limit(2)->get() as $post)
                 <a href="{{ route('view', $post) }}">
-                    <div class="flex flex-col items-start justify-center md:grid md:grid-cols-[max-content_1fr] md:gap-2 lg:grid-cols-[233px_1fr] lg:gap-y-3">
-                        <img class="p-2 w-40 lg:w-full object-cover" src="{{ $post->getThumbnail() }}" alt="">
-                            <div class="mb-2">
-                                <p class="pl-2 md:pl-0 text-xl font-bold text-md transition ease-in-out dark:text-white text-red-600 lg:text-black hover:text-red-600 dark:hover:text-red-600">
-                                    {{ $post->title }}
-                                </p>
+                    <div class="grid grid-cols-[1fr_1fr] gap-3">
+                        <div class="relative h-0 pb-2/3 sm:pt-1/3 lg:pb-1/3">
+                            <img class="absolute w-full h-full inset-0 object-cover object-top pb-3"
+                                src="{{ $post->getThumbnail() }}"
+                                alt="metal post thumbnail"
+                            >
+                        </div>
+                        <div class="flex md:flex-col md:px-8 md:justify-center">
+                            <p class="font-bold md:text-xl lg:text-2xl transition ease-in-out dark:text-white text-red-600 dark:hover:text-red-600">
+                                {{ $post->shortTitle() }}
+                            </p>
+                            <p class="hidden lg:block dark:text-gray-200">
+                                {{ $post->getFormattedDate() }}
+                            </p>
+                        </div>
+                    </div> <!-- card info end -->
                 </a> <!-- route link end -->
-                                <x-markdown class="hidden md:block dark:text-gray-100">
-                                    {{ $post->shortBody(10) }}
-                                </x-markdown>
-                                <p class="hidden lg:block dark:text-gray-200">
-                                    {{ $post->getFormattedDate() }}
-                                </p>
-                            </div> <!-- 4th div end -->
-                    </div> <!-- 3rd div end -->
-            @endforeach
-        </div> <!-- 2nd div end -->
+                @endforeach
+        </div> <!-- main wrapper end -->
     </div> <!-- categories end -->
     @endforeach
 
 </x-app-layout>
+

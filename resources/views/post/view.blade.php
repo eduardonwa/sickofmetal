@@ -3,7 +3,7 @@
 
         <article class="flex flex-col my-4">
             <!-- Article Image -->
-            <div class="bg-white dark:bg-zinc-800 flex flex-col justify-start px-8 lg:px-16 py-2">
+            <div class="bg-white dark:bg-zinc-900 flex flex-col justify-start px-8 lg:px-16 py-2">
                 @foreach($post->categories as $category)
                     <a
                         href="category/{{ $category->slug }}"
@@ -32,7 +32,7 @@
                 <img class="absolute inset-0 w-full h-full object-top object-cover" src="{{ $post->getThumbnail() }}">
             </div>
 
-            <div class="bg-white dark:bg-zinc-800 flex flex-col justify-start px-3">
+            <div class="bg-white dark:bg-zinc-900 flex flex-col justify-start px-3">
                 <div class="my-8 text-lg dark:text-gray-200 aspect-auto">
                     <x-markdown class="lg:px-28">
                         {!! $post->body !!}
@@ -47,7 +47,7 @@
             <div class="lg:col-start-1 lg:col-end-5 w-full flex pt-6">
                 <div class="w-1/2">
                     @if($prev ?? false)
-                        <a href="{{ route('view', $prev) }}" class="block w-full bg-white dark:bg-zinc-800 shadow hover:shadow-md text-left p-6">
+                        <a href="{{ route('view', $prev) }}" class="block w-full bg-white dark:bg-zinc-900 shadow hover:shadow-md text-left p-6">
                             <p class="text-lg text-sick dark:sick-text font-bold flex items-center">
                                 <i class="fas fa-arrow-left pr-1"></i>
                                 Previous

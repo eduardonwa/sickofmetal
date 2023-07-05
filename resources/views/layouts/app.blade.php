@@ -61,9 +61,9 @@
   gtag('config', 'G-8HXRBBFCV4');
 </script>
 
-<body class="bg-gray-200 font-family-karla dark:bg-zinc-900 antialiased dark:selection:sick-bg dark:selection:text-black">
+<body class="bg-gray-200 font-family-karla dark:bg-zinc-950 antialiased dark:selection:sick-bg dark:selection:text-black">
     <!-- Topic Nav -->
-    <nav class="charcoal dark:bg-black py-3" x-data="{ open: false }">
+    <nav class="bg-zinc-900 py-3" x-data="{ open: false }">
         <div>
             <a href="/" class="lg:hidden">
                 <img
