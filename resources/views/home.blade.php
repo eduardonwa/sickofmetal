@@ -11,13 +11,11 @@
     <div class="md:mx-auto md:col-start-2 md:col-end-5 lg:mx-0 row-start-1 lg:p-6">
         <div>
             <article class="relative">
-                <div class="relative pb-11/12 md:pb-0">
-                    <img
-                        class="absolute md:relative w-full h-full object-cover object-top"
-                        src="{{ $latestPost->getThumbnail() }}"
-                        alt="latest heavy metal post"
-                    >
-                </div>
+                <img
+                    class=""
+                    src="{{ $latestPost->getThumbnail() }}"
+                    alt="latest heavy metal post"
+                >
                 <div class="absolute bottom-0 left-0 right-0 py-2 bg-gradient-to-t from-black to-transparent lg:p-16 p-3 lg:pb-5">
                     <h1 class="mb-3 uppercase font-bold bg-red-600 mx-1 p-1 w-max text-center text-white">
                         @foreach($latestPost->categories as $category)
