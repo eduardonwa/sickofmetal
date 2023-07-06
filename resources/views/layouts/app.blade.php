@@ -141,7 +141,7 @@
         {{ $slot }}
     </div>
 
-    <footer class="bg-gray-300 py-4 dark:bg-zinc-900">
+    <footer class="bg-gray-300 pb-4 mt-8 pt-16 dark:bg-zinc-900">
         <div class="py-1 flex items-center justify-center gap-x-4 w-full dark:text-gray-400">
             <a href="https://instagram.com/sickofmetalnet">
                 <!-- Instagram -->
@@ -169,7 +169,7 @@
             </a>
         </div>
 
-        <div class="py-5 mx-auto container flex items-center justify-center space-x-5">
+        <div class="py-5 p-3 flex flex-col md:flex-row items-center justify-center space-x-5">
             @foreach ($categories as $category)
             <a
                 class="hover:text-gray-400 text-black dark:text-gray-400 dark:hover:text-gray-200 transition ease-in-out"
