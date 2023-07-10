@@ -160,16 +160,28 @@
                 <!-- Youtube -->
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    class="h-6 w-6 hover:text-gray-200 transition ease-in-out"
+                    class="h-7 w-7 hover:text-gray-200 transition ease-in-out"
                     fill="currentColor"
                     viewBox="0 0 24 24">
                 <path
                     d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
                 </svg>
             </a>
+
+            <a href="mailto:admin@sickofmetal.net">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-7 h-7 hover:text-gray-200 transition ease-in-out">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                </svg>
+            </a>
         </div>
 
-        <div class="py-5 p-3 flex flex-col md:flex-row items-center justify-center space-x-5">
+        <div class="py-5 p-3 flex flex-col md:flex-row items-center justify-center md:space-x-5">
             @foreach ($categories as $category)
             <a
                 class="hover:text-gray-400 text-black dark:text-gray-400 dark:hover:text-gray-200 transition ease-in-out"
@@ -178,6 +190,7 @@
             </a>
             @endforeach
         </div>
+
         <div class="mx-auto container flex items-center justify-center">
             <a href="/">
                 <img

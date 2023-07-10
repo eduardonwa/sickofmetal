@@ -19,15 +19,15 @@ class PostController extends Controller
     public function home()
     {
         //show the latest post created
-        $latestPost = Post::where('active', '=', 1)
+        $latestPosts = Post::where('active', '=', 1)
             ->where('published_at', '<', Carbon::now())
             ->orderBy('published_at', 'desc')
-            ->with('categories')
-            ->limit(1)
-            ->first();
+            ->limit(3)
+            ->get();
 
-        // show the 5 most popular posts
+        // show the 8 latest posts with more upvotes
         $popularPosts = Post::query()
+            ->whereNotIn('posts.id', $latestPosts->pluck('id'))
             ->leftJoin('upvote_downvotes', 'post_id', '=', 'upvote_downvotes.post_id')
             ->select('posts.*', DB::raw('COUNT(upvote_downvotes.id) as upvote_count'))
             ->where(function($query) {
@@ -38,14 +38,12 @@ class PostController extends Controller
             ->where('published_at', '<', Carbon::now())
             ->orderByDesc('upvote_count')
             ->groupBy('posts.id')
-            ->limit(5)
+            ->limit(8)
             ->get();
 
         // show recent categories with latest posts
         $categories = Category::query()
-            // ->with(['posts' => function ($query) {
-            //     $query->orderByDesc('published_at')->limit(3);
-            // }])
+            ->whereNotIn('posts.id', $latestPosts->pluck('id'))
             ->whereHas('posts', function($query) {
                 $query->where('active', '=', 1)
                       ->where('published_at', '<', Carbon::now());
@@ -58,7 +56,7 @@ class PostController extends Controller
             ->groupBy('categories.id')
             ->limit(5)
             ->get();
-        
+
         // if authorized show recommended posts based on user upvotes
         $user = auth()->user();
 
@@ -90,9 +88,9 @@ class PostController extends Controller
         }
 
         return view('home', compact(
-            'latestPost', 
-            'popularPosts', 
-            'recommendedPosts', 
+            'latestPosts',
+            'popularPosts',
+            'recommendedPosts',
             'categories'
         ));
     }
@@ -105,7 +103,7 @@ class PostController extends Controller
         if (!$post->active || $post->published_at > Carbon::now()) {
             throw new NotFoundHttpException();
         }
-      
+
         $next = Post::query()
             ->where('active', true)
             ->where('published_at', '<=', Carbon::now())
@@ -121,7 +119,7 @@ class PostController extends Controller
             ->orderBy('published_at', 'asc')
             ->limit(1)
             ->first();
-        
+
         $user = $request->user();
 
         PostView::create([
@@ -131,20 +129,21 @@ class PostController extends Controller
             'user_id' => $user?->id
         ]);
 
-        // show the 5 most popular posts
+        // show the 5 most popular posts on the post view
         $popularPosts = Post::query()
-        ->leftJoin('upvote_downvotes', 'post_id', '=', 'upvote_downvotes.post_id')
-        ->select('posts.*', DB::raw('COUNT(upvote_downvotes.id) as upvote_count'))
-        ->where(function($query) {
-            $query->whereNull('upvote_downvotes.is_upvote')
-                ->orWhere('upvote_downvotes.is_upvote', '=', 1);
-        })
-        ->where('active', '=', 1)
-        ->where('published_at', '<', Carbon::now())
-        ->orderByDesc('upvote_count')
-        ->groupBy('posts.id')
-        ->limit(5)
-        ->get();
+            ->where('posts.id', '!=', $post->id)
+            ->leftJoin('upvote_downvotes', 'post_id', '=', 'upvote_downvotes.post_id')
+            ->select('posts.*', DB::raw('COUNT(upvote_downvotes.id) as upvote_count'))
+            ->where(function($query) {
+                $query->whereNull('upvote_downvotes.is_upvote')
+                    ->orWhere('upvote_downvotes.is_upvote', '=', 1);
+            })
+            ->where('active', '=', 1)
+            ->where('published_at', '<', Carbon::now())
+            ->orderByDesc('upvote_count')
+            ->groupBy('posts.id')
+            ->limit(5)
+            ->get();
 
         return view('post.view', compact('post', 'prev', 'next', 'popularPosts'));
     }
@@ -174,7 +173,7 @@ class PostController extends Controller
     public function search(Request $request)
     {
         $q = $request->get('q');
-        
+
         $posts = Post::query()
             ->where('active', '=', true)
             ->whereDate('published_at', '<=', Carbon::now())

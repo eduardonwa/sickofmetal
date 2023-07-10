@@ -79,7 +79,7 @@
     <div class="lg:col-start-5 lg:col-end-6">
         @if ($popularPosts ?? false)
             <h1 class="rounded-md mx-3 md:mx-0 my-2 text-md p-2 font-bold uppercase bg-black w-max text-center text-white">
-                Latest News
+                Breaking News
             </h1>
             @foreach ($popularPosts as $popularPost)
                 <x-post-item :popularPost="$popularPost"></x-post-item>
