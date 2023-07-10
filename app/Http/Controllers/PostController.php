@@ -162,8 +162,8 @@ class PostController extends Controller
         $categoryPostIDs = CategoryPost::whereIn('category_id', $catIDs)->pluck('post_id');
 
         $posts = Post::whereIn('id', $categoryPostIDs)
-            ->where('active', true)
-            ->whereDate('published_at', '<=', Carbon::now())
+            ->where('active', '=', 1)
+            ->where('published_at', '<=', Carbon::now())
             ->orderBy('published_at', 'desc')
             ->paginate(10);
 
