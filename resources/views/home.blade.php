@@ -68,7 +68,6 @@
                 </div> <!-- recommended post end -->
             @endforeach
         </div> <!-- recommended post end -->
-
     </div> <!-- latest and recommended posts wrapper end -->
 
     <div class="md:col-start-2 md:col-end-5 lg:mx-0">
@@ -82,7 +81,7 @@
         </div>
     </div> <!-- YouTube end -->
 
-    <div class="lg:pt-6 lg:p-0 md:col-start-2 md:col-end-5 lg:flex-col lg:mx-auto lg:row-start-1 lg:col-start-5 lg:col-end-6 pt-6">
+    <div class="p-4 lg:pt-6 lg:p-0 md:col-start-2 md:col-end-5 lg:flex-col lg:mx-auto lg:row-start-1 lg:col-start-5 lg:col-end-6 pt-6">
         @foreach($latestPosts->skip(1)->take(2) as $lastTwo)
             <a href="{{ route('view', $lastTwo) }}">
                 <div class="relative h-0 pb-44 sm:pt-1/3 md:pb-0 lg:pb-2/12">
@@ -104,7 +103,7 @@
                 </p>
             </a>
         @endforeach
-    </div>
+    </div> <!-- last 2 posts end -->
 
     {{-- <x-sidebar/> --}}
 
