@@ -126,7 +126,7 @@
                             <p class="font-bold md:text-xl lg:text-2xl transition ease-in-out text-black hover:text-red-600 dark:text-white dark:hover:text-red-600">
                                 {{ $post->shortTitle() }}
                             </p>
-                            <p class="hidden lg:block dark:text-gray-200">
+                            <p class="hidden lg:block text-gray-600 dark:text-gray-200">
                                 {{ $post->getFormattedDate() }}
                             </p>
                         </div>
