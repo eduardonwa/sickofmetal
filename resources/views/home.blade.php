@@ -1,4 +1,4 @@
-<x-app-layout meta-description="Sick Of Metal, blog for the metalhead with heavy metal news and much more">
+<x-app-layout meta-description="Sick Of Metal is a blog for metalheads. Follow on Instagram @sickofmetalnet and subscribe on YouTube @SickOfMetal to discover new music and stay updated with the latest news.">
     <div>
         <h1 class="mx-3 md:mx-0 my-2 text-3xl p-2 font-bold italic w-max text-center dark:text-white">
             Breaking News

@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-layout :meta-title="$post->title">
     <section class="px-3 lg:col-start-2 lg:col-end-5 w-mx-auto">
 
         <article class="flex flex-col my-4">
@@ -29,7 +29,9 @@
             </div>
 
             <div class="relative h-0 pb-2/3 sm:pt-1/3 lg:pb-1/3 hover:opacity-75">
-                <img class="absolute inset-0 w-full h-full object-top object-cover" src="{{ $post->getThumbnail() }}">
+                <img class="absolute inset-0 w-full h-full object-top object-cover"
+                    src="{{ $post->getThumbnail() }}"
+                >
             </div>
 
             <div class="bg-white dark:bg-zinc-900 flex flex-col justify-start px-3">

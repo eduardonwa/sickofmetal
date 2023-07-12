@@ -1,4 +1,4 @@
-<x-app-layout :meta-title="'Sick Of Metal blog - Posts by category ' . $category->title"
+<x-app-layout :meta-title="'Sick Of Metal - Posts by ' . $category->title"
               :meta-description="'By category description'"
 >
     <div class="space-y-8 lg:space-y-0 md:col-start-1 md:col-end-4 lg:col-end-5 lg:grid lg:grid-cols-[1fr_1fr]">
