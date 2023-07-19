@@ -99,10 +99,10 @@
 
         <a href="/" class="flex items-center justify-center ">
             <img
-                class="h-10 md:p-1 transition-all duration-200"
+                class="md:p-1 transition-all duration-200"
                 src="{{ \App\Models\TextWidget::getImage('header') }}"
                 alt="sick of metal logo"
-                :class="{'h-16': !scrolledFromTop, 'h-10': scrolledFromTop}"
+                :class="{'h-16': !scrolledFromTop, 'h-12': scrolledFromTop}"
             >
         </a> <!-- logo end -->
 
@@ -114,26 +114,26 @@
             </button>
             <ul
                 class="
-                fixed
-                left-0
-                top-0
-                right-0
-                min-h-screen
-                bg-charcoal
-                space-y-4
-                p-4
-                transform
-                translate-x-full
-                transition
-                duration-200
+                    fixed
+                    left-0
+                    top-0
+                    right-0
+                    min-h-screen
+                    bg-charcoal
+                    space-y-4
+                    p-4
+                    transform
+                    translate-x-full
+                    transition
+                    duration-200
 
-                md:top-0
-                md:relative
-                md:min-h-0
-                md:space-y-0
-                md:p-0
-                md:translate-x-0
-                md:w-full
+                    md:top-0
+                    md:relative
+                    md:min-h-0
+                    md:space-y-0
+                    md:p-0
+                    md:translate-x-0
+                    md:w-full
             "
                 :class="{'translate-x-full': !navbarOpen, 'translate-x-0': navbarOpen}"
             >
@@ -207,13 +207,40 @@
 
                     @foreach ($allCategories as $category)
                     <li
-                        class="p-2 flex-col md:w-full mt-4 relative"
+                        class="flex-col md:w-full mt-4 md:mt-0 relative"
                         x-data="{ expanded: false }"
                     >
-                        <div class="flex items-center justify-between md:justify-around">
+                        <div
+                            class="
+                            flex
+                            items-center
+                            justify-between
+
+                            hover:text-black
+                            focus:ring-2
+                            active:ring-2
+                            ring-red-600
+
+                            transition
+                            ease-in-out
+
+                            md:justify-around
+                            "
+                        >
                             <a
                                 href="{{ route('by-category', ['category'=>$category['slug']]) }}"
-                                class="font-bold text-5xl md:text-xl text-white"
+                                class="
+                                    font-bold
+                                    text-5xl
+                                    text-white
+
+                                    md:text-xl
+                                    lg:uppercase
+
+                                    hover:text-gray-400
+                                    transition
+                                    ease-in-out
+                                "
                             >
                                 {{ $category['title'] }}
                             </a>
@@ -221,13 +248,16 @@
                             <span
                                 class="
                                     text-red-600
-                                    font-bold
-                                    text-3xl
+
+                                    text-5xl
+                                    rotate-90
                                     cursor-pointer
+                                    md:text-4xl
+                                    lg:text-5xl
                                 "
                                 @click="expanded = ! expanded"
                             >
-                                +
+                                &rsaquo;
                             </span> <!-- use this to show subcategories -->
                         </div> <!-- categories and plus icon end -->
 
@@ -248,7 +278,7 @@
                                     flex-col
                                     justify-center
                                     items-center
-
+                                    text-center
                                     top-full
                                     left-0
                                     right-0
@@ -256,9 +286,11 @@
                                     py-2
                                     text-2xl
                                     text-white
+                                    hover:text-red-600
+                                    transition
+                                    ease-in-out
 
                                     md:text-xl
-                                    lg:w-44
                                 "
                             >
                                 {{ $subCategory->title }}
