@@ -1,6 +1,7 @@
 <x-app-layout meta-description="Sick Of Metal is a blog for metalheads. Follow on Instagram @sickofmetalnet and subscribe on YouTube @SickOfMetal to discover new music and stay updated with the latest news.">
-    <div>
-        <h1 class="mx-3 md:mx-0 my-2 text-3xl p-2 font-bold italic w-max text-center dark:text-white">
+
+    <div class="md:mt-28">
+        <h1 class="mx-3 md:mx-0 my-2 text-3xl md:text-2xl p-2 font-bold italic w-max text-center dark:text-white">
             Breaking News
         </h1>
             @foreach ($popularPosts as $popularPost)
@@ -8,7 +9,7 @@
             @endforeach <!-- latest news column end -->
     </div> <!-- latest news end -->
 
-    <div class="md:mx-auto md:col-start-2 md:col-end-5 lg:mx-0 row-start-1 lg:p-6 w-full">
+    <div class="mt-[96px] md:mt-28 md:mx-auto md:col-start-2 md:col-end-5 lg:mx-0 row-start-1 lg:p-6 w-full">
         <div>
             @foreach($latestPosts->take(1) as $latestPost)
             <article class="relative lg:h-0 lg:p-1/3">
@@ -38,7 +39,7 @@
 
         @auth()
         @else
-        <div class="mt-2 p-3 dark:sick-bg bg-black">
+        <div class="p-3 dark:sick-bg bg-black">
             <p class="sick-text dark:text-black">
                 Sign up to comment plus a few added benefits. What are you waiting for?
                 <a href="/register" class="underline font-bold">Register now!</a>
@@ -50,7 +51,7 @@
         </div>
         @endauth
 
-        <h1 class="mx-3 md:mx-0 my-2 text-2xl p-2 font-bold w-max text-center dark:text-white">
+        <h1 class="mx-3 md:mx-0 my-2 text-3xl md:text-2xl p-2 font-bold w-max text-center dark:text-white">
             Suggested
         </h1>
 
@@ -72,7 +73,7 @@
 
     <div class="md:col-start-2 md:col-end-5 lg:mx-0">
         <div class="w-full bg-charcoal dark:bg-gray-900 shadow flex flex-col lg:flex p-6">
-            <p class="text-3xl font-black pb-5 text-gray-100 dark:sick-text">
+            <p class="text-3xl md:text-2xl font-black pb-5 text-gray-100 dark:sick-text">
                 {{ \App\Models\TextWidget::getTitle('youtube-sidebar') }}
             </p>
             <div class="shadow-xl">
@@ -81,7 +82,7 @@
         </div>
     </div> <!-- YouTube end -->
 
-    <div class="p-4 lg:pt-6 lg:p-0 md:col-start-2 md:col-end-5 lg:flex-col lg:mx-auto lg:row-start-1 lg:col-start-5 lg:col-end-6 pt-6">
+    <div class="p-4 lg:pt-6 lg:my-28 lg:p-0 md:col-start-2 md:col-end-5 lg:flex-col lg:mx-auto lg:row-start-1 lg:col-start-5 lg:col-end-6 pt-6">
         @foreach($latestPosts->skip(1)->take(2) as $lastTwo)
             <a href="{{ route('view', $lastTwo) }}">
                 <div class="relative h-0 pb-44 sm:pt-1/3 md:pb-0 lg:pb-2/12">

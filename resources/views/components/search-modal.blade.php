@@ -1,14 +1,19 @@
 <button
     @click="open = true"
     type="button"
-    class="pt-8 pb-3 lg:pt-0 lg:pb-0"
 >
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-white cursor-pointer">
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="w-6 h-6 text-white cursor-pointer"
+    >
         <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
     </svg>
 </button>
 
-<!-- modal -->
 <div
     x-show="open"
     x-cloak
@@ -19,12 +24,10 @@
     :aria-labelledby="$id('modal-title')"
     class="fixed inset-0 z-20"
 >
-    <!-- overlay -->
-    <div class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm">
-        <!-- panel -->
+    <div class="fixed inset-0 bg-red-950 bg-opacity-20 backdrop-blur-sm">
         <div
             @click="open = false"
-            class="relative top-28 p-3 h-full w-full flex items-start justify-center"
+            class="relative top-24 p-3 h-full w-full flex items-start justify-center"
         >
             <div
                 @click.stop
@@ -50,9 +53,8 @@
                         peer-focus:scale-[0.85] peer-focus:text-primary peer-[:not(:placeholder-shown)]:-translate-y-2 peer-[:not(:placeholder-shown)]:translate-x-[0.15rem]
                         peer-[:not(:placeholder-shown)]:scale-[0.85] motion-reduce:transition-none"
                         >Search</label>
-                </form> <!-- search elements end -->
-            </div>
-        </div>
-    </div>
-    </div>
+                </form>
+            </div> <!-- search elements end -->
+        </div> <!-- panel end -->
+    </div> <!-- overlay end -->
 </div> <!-- modal end -->

@@ -1,7 +1,7 @@
 <x-app-layout :meta-title="$post->title">
-    <section class="px-3 lg:col-start-2 lg:col-end-5 w-mx-auto">
+    <section class="my-32 px-3 lg:col-start-2 lg:col-end-5 w-mx-auto">
 
-        <article class="flex flex-col my-4">
+        <article class="flex flex-col">
             <!-- Article Image -->
             <div class="bg-white dark:bg-zinc-900 flex flex-col justify-start px-8 lg:px-16 py-2">
                 @foreach($post->categories as $category)
@@ -78,7 +78,7 @@
         <livewire:comments :post="$post" /> <!-- comments end -->
 
     </section>
-    <div class="lg:col-start-5 lg:col-end-6">
+    <div class="lg:col-start-5 lg:col-end-6 my-32">
         @if ($popularPosts ?? false)
             <h1 class="rounded-md mx-3 md:mx-0 my-2 text-md p-2 font-bold uppercase bg-black w-max text-center text-white">
                 Breaking News

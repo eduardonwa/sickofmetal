@@ -10,3 +10,9 @@
         background-color: #e4ff00;
     }
 }
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+}

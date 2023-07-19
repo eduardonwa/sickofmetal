@@ -1,7 +1,7 @@
 <x-app-layout :meta-title="'Sick Of Metal - Posts by ' . $category->title"
               :meta-description="'By category description'"
 >
-    <div class="space-y-8 lg:space-y-0 md:col-start-1 md:col-end-4 lg:col-end-5 lg:grid lg:grid-cols-[1fr_1fr]">
+    <div class="my-32 space-y-8 lg:space-y-0 md:col-start-1 md:col-end-4 lg:col-end-5 lg:grid lg:grid-cols-[1fr_1fr]">
         @foreach ($posts as $post)
         <a class="p-3 flex flex-col" href="{{ route('view', $post) }}">
             <div class="max-w-sm rounded overflow-hidden shadow-lg h-full">

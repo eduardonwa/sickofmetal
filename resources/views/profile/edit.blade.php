@@ -5,9 +5,9 @@
         </h2>
     </x-slot>
 
-    <div class="py-12 lg:col-span-4">
+    <div class="py-12 lg:col-span-4 my-[89px]">
         <div class="mx-3 sm:px-6 lg:px-8 space-y-6">
-            
+
             <div class="p-4 sm:p-8 bg-white dark:bg-zinc-800 shadow sm:rounded-lg mt-1">
                 <h2 class="dark:sick-text text-lg">Settings</h2>
                 <div @click="isDarkMode =! isDarkMode">
