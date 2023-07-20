@@ -170,7 +170,7 @@ class PostController extends Controller
             return view('categories', compact('posts', 'category'));
     }
 
-    public function search(Request $request)
+    public function search(Request $request, Post $post)
     {
         $q = $request->get('q');
 
@@ -184,6 +184,23 @@ class PostController extends Controller
             })
             ->paginate(10);
 
-        return view('post.search', compact('posts'));
+        // show the 5 most popular posts on the post view
+        $popularPosts = Post::query()
+        ->where('posts.id', '!=', $post->id)
+        ->leftJoin('upvote_downvotes', 'post_id', '=', 'upvote_downvotes.post_id')
+        ->select('posts.*', DB::raw('COUNT(upvote_downvotes.id) as upvote_count'))
+        ->where(function($query) {
+            $query->whereNull('upvote_downvotes.is_upvote')
+                ->orWhere('upvote_downvotes.is_upvote', '=', 1);
+        })
+        ->where('active', '=', 1)
+        ->where('published_at', '<', Carbon::now())
+        ->orderByDesc('upvote_count')
+        ->groupBy('posts.id')
+        ->limit(5)
+        ->get();
+
+
+        return view('post.search', compact('posts', 'popularPosts'));
     }
 }
