@@ -114,7 +114,7 @@
             <h3 class="pb-3 text-md lg:text-xl font-black dark:text-zinc-400">
                 {{ $category->title }}
             </h3>
-            @foreach($category->publishedPosts()->limit(2)->get() as $post)
+            @foreach($category->publishedPosts()->latest()->limit(2)->get() as $post)
                 <a href="{{ route('view', $post) }}">
                     <div class="grid grid-cols-[1fr_1fr] gap-3">
                         <div class="relative h-0 pb-2/3 sm:pt-1/3 lg:pb-1/3">
