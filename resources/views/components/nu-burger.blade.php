@@ -273,7 +273,7 @@
                                     w-full
                                     bg-black
                                     z-10
-
+                                    
                                     inline-flex
                                     flex-col
                                     justify-center
