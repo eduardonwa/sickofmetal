@@ -1,6 +1,6 @@
 <x-app-layout meta-description="Sick Of Metal is a blog for metalheads. Follow on Instagram @sickofmetalnet and subscribe on YouTube @SickOfMetal to discover new music and stay updated with the latest news.">
 
-    <div class="md:mt-28">
+    <div class="md:mt-36 lg:mt-24">
         <h1 class="mx-3 md:mx-0 my-2 text-3xl md:text-2xl p-2 font-bold italic w-max text-center dark:text-white">
             Breaking News
         </h1>
@@ -9,7 +9,7 @@
             @endforeach <!-- latest news column end -->
     </div> <!-- latest news end -->
 
-    <div class="mt-[96px] md:mt-28 md:mx-auto md:col-start-2 md:col-end-5 lg:mx-0 row-start-1 lg:p-6 w-full">
+    <div class="mt-[110px] md:mt-36 lg:mt-24 md:mx-auto md:col-start-2 md:col-end-5 lg:mx-0 row-start-1 lg:p-6 w-full">
         <div>
             @foreach($latestPosts->take(1) as $latestPost)
             <article class="relative lg:h-0 lg:p-1/3">
@@ -82,7 +82,7 @@
         </div>
     </div> <!-- YouTube end -->
 
-    <div class="p-4 lg:pt-6 lg:my-28 lg:p-0 md:col-start-2 md:col-end-5 lg:flex-col lg:mx-auto lg:row-start-1 lg:col-start-5 lg:col-end-6 pt-6">
+    <div class="p-4 lg:mt-[120px] lg:p-0 md:col-start-2 md:col-end-5 lg:flex-col lg:mx-auto lg:row-start-1 lg:col-start-5 lg:col-end-6 pt-6">
         @foreach($latestPosts->skip(1)->take(2) as $lastTwo)
             <a href="{{ route('view', $lastTwo) }}">
                 <div class="relative h-0 pb-44 sm:pt-1/3 md:pb-0 lg:pb-2/12">

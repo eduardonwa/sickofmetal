@@ -9,19 +9,19 @@
         duration-200
         md:px-12
     "
-    :class="{'h-24': !scrolledFromTop, 'h-12': scrolledFromTop}"
+    :class="{'h-24 p-2': !scrolledFromTop, 'h-12': scrolledFromTop}"
 >
 
     <div class="
-        flex
-        items-center
-        justify-around
-        p-4
+            flex
+            items-center
+            justify-around
+            p-4
 
-        md:p-0
-        md:grid
-        md:grid-cols-[auto_1fr_auto]
-        lg:grid-cols-[auto_610px_auto]
+            md:p-0
+            md:grid
+            md:grid-cols-[auto_1fr_auto]
+            lg:grid-cols-[auto_610px_auto]
         "
     >
         <div
@@ -30,17 +30,17 @@
                 p-2
 
                 md:order-last
-                md:ml-6
                 md:flex
                 md:flex-col
                 md:items-center
                 md:justify-center
-                md:space-y-3
+                md:ml-8
+                md:space-y-4
 
                 lg:flex-row
                 lg:items-center
                 lg:justify-between
-                lg:w-36
+                lg:w-44
                 lg:space-y-0
             "
             >
@@ -79,16 +79,16 @@
                 </div> <!-- auth user end -->
                 @else
                 <div class="
-                    flex-col
-                    flex
-                    space-y-2
-                    pt-2
-                    items-center
-                    justify-center
-                    w-full
+                        flex-col
+                        flex
+                        space-y-2
+                        pt-2
+                        items-center
+                        justify-center
+                        w-full
 
-                    md:pt-0
-                "
+                        md:pt-0
+                    "
                 >
                     <a href="{{ route('login') }}" class="text-gray-200 hover:underline">Login</a>
                     <a href="{{ route('register') }}" class="text-gray-200 hover:underline">Register</a>
@@ -99,7 +99,7 @@
 
         <a href="/" class="flex items-center justify-center ">
             <img
-                class="md:p-1 transition-all duration-200"
+                class="transition-all duration-200"
                 src="{{ \App\Models\TextWidget::getImage('header') }}"
                 alt="sick of metal logo"
                 :class="{'h-16': !scrolledFromTop, 'h-12': scrolledFromTop}"
@@ -134,7 +134,7 @@
                     md:p-0
                     md:translate-x-0
                     md:w-full
-            "
+                "
                 :class="{'translate-x-full': !navbarOpen, 'translate-x-0': navbarOpen}"
             >
                 <li class="flex items-center justify-end mr-5">
@@ -235,7 +235,7 @@
                                     text-white
 
                                     md:text-xl
-                                    lg:uppercase
+                                    md:uppercase
 
                                     hover:text-gray-400
                                     transition
@@ -259,10 +259,21 @@
                             >
                                 &rsaquo;
                             </span> <!-- use this to show subcategories -->
-                        </div> <!-- categories and plus icon end -->
+                        </div> <!-- categories and icon end -->
 
                         <div
-                            class="flex flex-col mt-4 md:absolute"
+                            class="
+                                flex
+                                flex-col
+                                mt-4
+                                border-2
+                                rounded-sm
+                                border-red-600
+
+                                md:absolute
+                                md:top-[62px]
+                                lg:top-14
+                            "
                             x-show="expanded" x-collapse
                             @click.away="expanded = false"
                         >
@@ -273,7 +284,7 @@
                                     w-full
                                     bg-black
                                     z-10
-                                    
+
                                     inline-flex
                                     flex-col
                                     justify-center
