@@ -11,9 +11,11 @@
             @endforeach
             <a href="{{ route('view', $popularPost) }}">
                 <h3 class="dark:text-gray-200 ">
-                    <span class="antialiased dark:hover:bg-red-600 hover:bg-black dark:hover:text-gray-100 hover:text-red-600">{{$popularPost->title}}</span>
+                    <span class="antialiased hover:sick-bg dark:hover:sick-bg dark:hover:text-black">
+                        {{$popularPost->title}}
+                    </span>
                 </h3>
             </a>
         </div>
     </div>
-</article> <!-- latest news end -->
+</article> <!-- breaking news end -->

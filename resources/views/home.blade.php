@@ -62,7 +62,7 @@
                         <div class="relative h-0 pb-2/3 sm:pt-1/3 lg:pb-1/3">
                             <img class="absolute w-full h-full inset-0 object-cover object-top" src="{{ $recommended->getThumbnail() }}">
                         </div>
-                        <p class="h-full w-full p-2 text-gray-200 font-bold bg-black dark:hover:text-red-500 hover:text-red-500 dark:text-gray-200 lg:text-md transition ease-in-out">
+                        <p class="h-full w-full p-2 text-gray-200 font-bold bg-black dark:hover:sick-text hover:sick-text dark:text-gray-200 lg:text-md transition ease-in-out">
                             {{ $recommended->shortTitle() }}
                         </p>
                     </a>
@@ -92,7 +92,7 @@
                     >
                 </div>
                 <p class="pt-4 lg:pt-1 font-bold bottom-0 w-full dark:text-gray-300 text-black text-base/6">
-                    <span class="antialiased dark:hover:bg-red-600 hover:bg-black dark:hover:text-gray-100 hover:text-red-600">
+                    <span class="antialiased hover:sick-bg dark:hover:sick-bg dark:hover:text-black">
                         {{ $lastTwo->shortTitle() }}
                     </span>
                 </p>
@@ -125,7 +125,7 @@
                         </div>
                         <div class="flex md:flex-col md:px-8 md:justify-center">
                             <p class="font-bold md:text-xl lg:text-2xl text-black dark:text-white">
-                                <span class="antialiased dark:hover:bg-red-600 hover:bg-black dark:hover:text-gray-100 hover:text-red-600">
+                                <span class="antialiased hover:sick-bg dark:hover:sick-bg dark:hover:text-black">
                                     {{ $post->shortTitle() }}
                                 </span>
                             </p>
