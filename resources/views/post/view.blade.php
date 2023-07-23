@@ -80,7 +80,7 @@
     </section>
     <div class="lg:col-start-5 lg:col-end-6 my-32">
         @if ($popularPosts ?? false)
-            <h1 class="rounded-md mx-3 md:mx-0 my-2 text-md p-2 font-bold uppercase bg-black w-max text-center text-white">
+            <h1 class="rounded-md mx-3 md:mx-0 my-2 text-base p-2 font-bold uppercase bg-black w-max text-center text-white">
                 Breaking News
             </h1>
             @foreach ($popularPosts as $popularPost)

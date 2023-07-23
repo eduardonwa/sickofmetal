@@ -19,7 +19,7 @@
                     alt="thumbnail from the most popular post on the site"
                 >
                 <div class="absolute bottom-0 left-0 right-0 py-2 bg-gradient-to-t from-black to-transparent lg:p-16 p-3 lg:pb-5">
-                    <h1 class="mb-3 uppercase font-bold bg-red-600 mx-1 p-1 w-max text-center text-white">
+                    <h1 class="text-base mb-3 uppercase font-bold bg-red-600 mx-1 p-1 w-max text-center text-white">
                                 @foreach ($latestPost->categories as $category)
                                     {{ $category->title }}
                                     @endforeach
@@ -91,8 +91,10 @@
                         alt="metal post thumbnail"
                     >
                 </div>
-                <p class="pt-4 lg:pt-1 font-bold bottom-0 w-full dark:text-gray-300 text-black text-base/6 dark:hover:text-red-600 hover:text-red-600 transition ease-in-out">
-                    {{ $lastTwo->shortTitle() }}
+                <p class="pt-4 lg:pt-1 font-bold bottom-0 w-full dark:text-gray-300 text-black text-base/6">
+                    <span class="antialiased dark:hover:bg-red-600 hover:bg-black dark:hover:text-gray-100 hover:text-red-600">
+                        {{ $lastTwo->shortTitle() }}
+                    </span>
                 </p>
 
                 <p class="pb-8 dark:text-zinc-400 text-zinc-600">
@@ -105,8 +107,6 @@
             </a>
         @endforeach
     </div> <!-- last 2 posts end -->
-
-    {{-- <x-sidebar/> --}}
 
     @foreach($categories as $category)
     <div class="mx-4 md:mx-0 md:col-start-2 md:col-end-5">
@@ -124,11 +124,17 @@
                             >
                         </div>
                         <div class="flex md:flex-col md:px-8 md:justify-center">
-                            <p class="font-bold md:text-xl lg:text-2xl transition ease-in-out text-black hover:text-red-600 dark:text-white dark:hover:text-red-600">
-                                {{ $post->shortTitle() }}
+                            <p class="font-bold md:text-xl lg:text-2xl text-black dark:text-white">
+                                <span class="antialiased dark:hover:bg-red-600 hover:bg-black dark:hover:text-gray-100 hover:text-red-600">
+                                    {{ $post->shortTitle() }}
+                                </span>
                             </p>
                             <p class="hidden lg:block text-gray-600 dark:text-gray-200">
-                                {{ $post->getFormattedDate() }}
+                                @if ($post->published_at->diffInWeeks(now()) >= 1)
+                                    {{ $post->getFormattedDate() }}
+                                @else
+                                    {{ $post->published_at->diffForHumans() }}
+                                @endif
                             </p>
                         </div>
                     </div> <!-- card info end -->

@@ -10,7 +10,7 @@
                 </div>
                 <div class="h-full text-center bg-white dark:bg-zinc-900 text-gray-900 dark:text-gray-200 p-3">
                     @foreach ($post->categories as $category)
-                    <h1 class="uppercase font-semibold text-red-500">{{ $category->title }}</h1>
+                    <h1 class="text-base uppercase font-semibold text-red-500">{{ $category->title }}</h1>
                     @endforeach
                     <p class="font-bold">{{ $post->title }}</p>
                     <div class="mb-2">
