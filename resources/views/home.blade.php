@@ -73,7 +73,7 @@
 
     <div class="md:col-start-2 md:col-end-5 lg:mx-0">
         <div class="w-full bg-charcoal dark:bg-gray-900 shadow flex flex-col lg:flex p-6">
-            <p class="text-3xl md:text-2xl font-black pb-5 text-gray-100 dark:sick-text">
+            <p class="text-3xl md:text-2xl font-black pb-5 sick-text">
                 {{ \App\Models\TextWidget::getTitle('youtube-sidebar') }}
             </p>
             <div class="shadow-xl">
