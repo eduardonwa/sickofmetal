@@ -19,11 +19,11 @@
                     alt="thumbnail from the most popular post on the site"
                 >
                 <div class="absolute bottom-0 left-0 right-0 py-2 bg-gradient-to-t from-black to-transparent lg:p-16 p-3 lg:pb-5">
-                    <h1 class="text-base mb-3 uppercase font-bold bg-red-600 mx-1 p-1 w-max text-center text-white">
-                                @foreach ($latestPost->categories as $category)
-                                    {{ $category->title }}
-                                    @endforeach
-                            </h1>
+                    <h1 class="lg:text-lg text-base mb-3 uppercase font-bold bg-red-600 mx-1 p-1 w-max text-center text-white">
+                        @foreach ($latestPost->categories as $category)
+                            {{ $category->title }}
+                        @endforeach
+                    </h1>
                     <a href="{{ route('view', $latestPost) }}">
                         <h3 class="text-3xl text-white font-bold m-1 transition ease-out hover:text-gray-300">
                             {{ $latestPost->title }}

@@ -38,8 +38,10 @@
 
         [x-cloak] { display: none !important; }
 
-        .minus {
-
+        #postLinks > a:link, a:hover > span {
+            text-decoration: underline;
+            text-decoration-thickness: 2px;
+            text-decoration-color: #ff0808;
         }
     </style>
 
