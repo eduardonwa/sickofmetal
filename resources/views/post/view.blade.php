@@ -36,7 +36,7 @@
 
             <div class="bg-white dark:bg-zinc-900 flex flex-col justify-start px-3">
                 <div class="bodyOfThePost my-8 text-lg dark:text-gray-200 aspect-auto">
-                    <x-markdown class="lg:px-28" id="postLinks">
+                    <x-markdown class="md:px-20" id="postLinks">
                         {!! $post->body !!}
                     </x-markdown>
                 </div>
