@@ -64,6 +64,11 @@
                             <x-dropdown-link :href="route('profile.edit')">
                                 {{ __('Profile') }}
                             </x-dropdown-link>
+                            @if (Auth::user() && Auth::user()->isAdmin())
+                                <x-dropdown-link href="/admin">
+                                    {{ __('Admin') }}
+                                </x-dropdown-link>
+                            @endif
                             <!-- Authentication -->
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
@@ -173,6 +178,11 @@
                                     <x-dropdown-link :href="route('profile.edit')">
                                         {{ __('Profile') }}
                                     </x-dropdown-link>
+                                    @if (Auth::user() && Auth::user()->isAdmin())
+                                        <x-dropdown-link href="/admin">
+                                            {{ __('Admin') }}
+                                        </x-dropdown-link>
+                                    @endif
                                     <!-- Authentication -->
                                     <form method="POST" action="{{ route('logout') }}">
                                         @csrf
