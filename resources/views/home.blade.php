@@ -82,7 +82,7 @@
         </div>
     </div> <!-- YouTube end -->
 
-    <div class="p-4 lg:mt-[120px] lg:p-0 md:col-start-2 md:col-end-5 lg:flex-col lg:mx-auto lg:row-start-1 lg:col-start-5 lg:col-end-6 pt-6">
+    <div class="p-4 lg:mt-[120px] lg:p-0 md:col-start-2 md:col-end-5 lg:flex-col lg:mx-auto lg:row-start-1 lg:col-start-5 lg:col-end-6">
         @foreach($latestPosts->skip(1)->take(2) as $lastTwo)
             <a href="{{ route('view', $lastTwo) }}">
                 <div class="relative h-0 pb-44 sm:pt-1/3 md:pb-0 lg:pb-2/12">
@@ -91,7 +91,18 @@
                         alt="metal post thumbnail"
                     >
                 </div>
-                <p class="pt-4 lg:pt-1 font-bold bottom-0 w-full dark:text-gray-300 text-black text-base/6">
+                <p class="
+                        pt-4
+                        font-bold
+                        bottom-0
+                        w-full
+                        dark:text-gray-300
+                        text-black
+                        text-base/6
+                        md:pt-8
+                        lg:pt-1
+                    "
+                >
                     <span class="antialiased hover:sick-bg dark:hover:sick-bg dark:hover:text-black">
                         {{ $lastTwo->shortTitle() }}
                     </span>
