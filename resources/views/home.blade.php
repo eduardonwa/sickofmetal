@@ -122,9 +122,11 @@
     @foreach($categories as $category)
     <div class="mx-4 md:mx-0 md:col-start-2 md:col-end-5">
         <div class="p-3 bg-white dark:bg-transparent dark:lg:bg-zinc-900 shadow-md">
-            <h3 class="pb-3 text-md lg:text-xl font-black dark:text-zinc-400">
-                {{ $category->title }}
-            </h3>
+            <a href="category/{{ $category->slug }}">
+                <h3 class="pb-3 text-lg lg:text-xl font-black dark:text-zinc-400">
+                    {{ $category->title }}
+                </h3>
+            </a>
             @foreach($category->publishedPosts()->latest()->limit(2)->get() as $post)
                 <a href="{{ route('view', $post) }}">
                     <div class="grid grid-cols-[1fr_1fr] gap-3">
