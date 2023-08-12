@@ -2,18 +2,22 @@
 
 namespace App\Models;
 
+use App\Models\Tag;
 use App\Models\User;
 use App\Models\Category;
+use App\Models\PostView;
+use Spatie\Tags\HasTags;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Post extends Model
 {
-    use HasFactory;
+    use HasFactory, HasTags;
 
     protected $fillable = [
         'title',
@@ -75,5 +79,10 @@ class Post extends Model
                 return $minutes. ' '.str('minute')->plural($minutes);
             }
         );
+    }
+
+    public function views(): HasMany
+    {
+        return $this->hasMany(PostView::class);
     }
 }

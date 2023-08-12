@@ -9,6 +9,9 @@
     .sick-bg {
         background-color: #e4ff00;
     }
+    .sick-border {
+        border-color: #e4ff00;
+    }
 }
 
 @layer base {

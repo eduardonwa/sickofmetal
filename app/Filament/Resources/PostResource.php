@@ -11,9 +11,11 @@ use Filament\Resources\Form;
 use Filament\Resources\Table;
 use Filament\Resources\Resource;
 use FilamentTiptapEditor\TiptapEditor;
+use Filament\Forms\Components\TagsInput;
 use Filament\Forms\Components\ViewField;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\PostResource\Pages;
+use Filament\Forms\Components\SpatieTagsInput;
 use Spatie\FilamentMarkdownEditor\MarkdownEditor;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\PostResource\RelationManagers;
@@ -61,6 +63,8 @@ class PostResource extends Resource
                     ->multiple()
                     ->relationship('categories', 'title')
                     ->required(),
+                    SpatieTagsInput::make('tags')
+                        ->separator(',')
                 ])->columnSpan(4)
             ])->columns(12);
     }

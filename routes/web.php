@@ -32,4 +32,5 @@ Route::get('/', [PostController::class, 'home'])->name('name');
 Route::get('/search', [PostController::class, 'search'])->name('search');
 Route::get('/about-us', [SiteController::class, 'about'])->name('about');
 Route::get('/category/{category:slug}', [PostController::class, 'byCategory'])->name('by-category');
+Route::get('/tag/{tag:slug}', [PostController::class, 'byTag'])->name('by-tag');
 Route::get('/{post:slug}', [PostController::class, 'show'])->name('view');

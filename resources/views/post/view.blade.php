@@ -11,21 +11,27 @@
                         {{ $category->title }}
                     </a>
                 @endforeach
-                <h1 class="text-3xl font-bold dark:text-white">
+                <h1 class="text-3xl py-4 font-bold dark:text-white">
                     {{ $post->title }}
                 </h1>
                 <span class="dark:text-gray-200 text-gray-700 py-4">
                     {{ $post->caption }}
                 </span>
-                <p class="dark:text-gray-200 pb-4 text-sm flex-col">
-                    By <span class="font-semibold hover:text-gray-700 dark:text-gray-200">
+                <div class="dark:text-gray-200 pb-4 text-sm flex flex-col">
+                    {{-- By <span class="font-semibold hover:text-gray-700 dark:text-gray-200">
                         {{ $post->user->name }}
-                    </span> <br>
+                    </span> <br> --}}
+                    {{-- @foreach ($post->views as $view)
+                        {{ $view->post_id }}
+                    @endforeach --}}
+                    <span class="rounded-full">
+                        {{ $post->human_read_time }}
+                    </span>
 
                     <span>
-                        {{ $post->getFormattedDate() }}, {{ $post->human_read_time }} read time
+                        {{ $post->getFormattedDate() }}
                     </span>
-                </p>
+                </div>
             </div>
 
             <div class="relative h-0 pb-2/3 sm:pt-1/3 lg:pb-1/3 hover:opacity-75">
@@ -34,11 +40,44 @@
                 >
             </div>
 
-            <div class="bg-white dark:bg-zinc-900 flex flex-col justify-start px-3">
-                <div class="bodyOfThePost my-8 text-lg dark:text-gray-200 aspect-auto">
-                    <x-markdown class="md:px-20" id="postLinks">
+            <div class="bg-white dark:bg-zinc-900 flex flex-col justify-start">
+                <div class="bodyOfThePost my-5 text-lg dark:text-gray-200 aspect-auto">
+                    <x-markdown class="px-3 md:px-20" id="postLinks">
                         {!! $post->body !!}
                     </x-markdown>
+
+                    <div class="px-3 mt-20 md:px-20 w-full flex gap-x-2 pb-4">
+                        @foreach ($post->tags as $tag)
+                            <a href="tag/{{ $tag->slug }}" class="
+                                    w-auto
+                                    py-1
+                                    text-sm
+                                    font-semibold
+                                    cursor-pointer
+                                    text-black
+                                    dark:sick-text
+
+                                    lg:w-max
+                                    lg:p-1
+                                    lg:font-normal
+                                    lg:rounded-sm
+                                    lg:border
+                                    lg:border-red-600
+                                    lg:hover:bg-red-600
+                                    lg:hover:text-white
+                                    lg:transition
+                                    lg:ease-in-out
+
+                                    lg:dark:hover:bg-transparent
+                                    lg:dark:hover:sick-border
+                                    lg:dark:sick-text
+                                    "
+                            >
+                                {{ $tag->name }}
+                            </a>
+                        @endforeach
+                    </div>
+
                 </div>
             </div> <!-- body -->
 

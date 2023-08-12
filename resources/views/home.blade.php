@@ -66,10 +66,10 @@
                             {{ $recommended->shortTitle() }}
                         </p>
                     </a>
-                </div> <!-- recommended post end -->
+                </div> <!-- suggested post end -->
             @endforeach
-        </div> <!-- recommended post end -->
-    </div> <!-- latest and recommended posts wrapper end -->
+        </div> <!-- suggested post end -->
+    </div> <!-- latest and suggested posts wrapper end -->
 
     <div class="md:col-start-2 md:col-end-5 lg:mx-0">
         <div class="w-full bg-charcoal dark:bg-gray-900 shadow flex flex-col lg:flex p-6">

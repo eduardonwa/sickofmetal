@@ -5,26 +5,29 @@
         <section class="w-full md:w-2/3 px-3">
             <div class="flex flex-col">
                 <span class="text-2xl dark:text-gray-400 pb-8">
-                    Showing related posts to your search
+                    Showing related posts
                 </span>
                 @foreach($posts as $post)
-                    <div class="border border-gray-900 p-2 rounded-sm my-3">
+                    <div class="border border-gray-700 p-2 rounded-sm my-3">
                         <a href="{{ route('view', $post) }}">
                             <h1 class="my-2 text-red-600 font-bold text-lg uppercase">
-                                {!!
-                                    str_ireplace(request()->get('q'),
-                                    '<span class="bg-yellow-400">'.request()->get('q').'</span>',
-                                    $post->title)
-                                !!}
+                                {{ $post->title  }}
                             </h1>
                         </a>
-                        <div>
+                        <div class="flex flex-col">
                             <p class="dark:text-gray-200 pb-4">
                                 {{ $post->shortBody() }}
                             </p>
                             <span class="text-gray-500 dark:text-gray-50">
                                 {{ $post->getFormattedDate() }}
                             </span>
+                            <div class="flex pt-2 space-x-2">
+                                @foreach ($post->tags as $tag)
+                                    <span class="bg-black text-white p-1 border dark:sick-border dark:text-gray-200">
+                                        {{ $tag->name }}
+                                    </span>
+                                @endforeach
+                            </div>
                         </div>
                     </div>
                 @endforeach

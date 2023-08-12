@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Category;
-use App\Models\CategoryPost;
 use App\Models\PostView;
+use App\Models\CategoryPost;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use App\Models\Tag;
 
 class PostController extends Controller
 {
@@ -77,11 +78,16 @@ class PostController extends Controller
                 ->get();
         // not authorized = popular posts based on views
         } else {
+
+            $startWeek = Carbon::now()->subWeek()->startOfWeek();
+            $endWeek   = Carbon::now()->subWeek()->endOfWeek();
+
             $recommendedPosts = Post::query()
                 ->leftJoin('post_views', 'posts.id', '=', 'post_views.post_id')
                 ->select('posts.*', DB::raw('COUNT(post_views.id) as view_count'))
                 ->where('active', '=', 1)
-                ->where('published_at', '<', Carbon::now())
+                ->withCount('views')->having('views_count', '>', 15)
+                ->whereBetween('published_at',[$startWeek, $endWeek])
                 ->groupBy('posts.id')
                 ->limit(3)
                 ->get();
@@ -168,6 +174,36 @@ class PostController extends Controller
             return view('categories', compact('posts', 'category'));
     }
 
+    public function byTag(Post $post, $slug)
+    {
+        $posts = Post::withAnyTags([$slug])
+            ->where('active', '=', 1)
+            ->where('published_at', '<', Carbon::now())
+            ->orderBy('published_at', 'desc')
+            ->with('tags:id,name')
+            ->paginate(8);
+
+        // dd($posts);
+
+        // show the 5 most popular posts on the post view
+        $popularPosts = Post::query()
+            ->where('posts.id', '!=', $post->id)
+            ->leftJoin('upvote_downvotes', 'post_id', '=', 'upvote_downvotes.post_id')
+            ->select('posts.*', DB::raw('COUNT(upvote_downvotes.id) as upvote_count'))
+            ->where(function($query) {
+                $query->whereNull('upvote_downvotes.is_upvote')
+                    ->orWhere('upvote_downvotes.is_upvote', '=', 1);
+            })
+            ->where('active', '=', 1)
+            ->where('published_at', '<', Carbon::now())
+            ->orderByDesc('upvote_count')
+            ->groupBy('posts.id')
+            ->limit(5)
+            ->get();
+
+            return view('tag', compact('popularPosts', 'posts'));
+    }
+
     public function search(Request $request, Post $post)
     {
         $q = $request->get('q');
@@ -180,7 +216,7 @@ class PostController extends Controller
                 $query->where('title', 'like', "%$q%")
                       ->orWhere('body', 'like', "%$q%");
             })
-            ->paginate(10);
+            ->paginate(8);
 
         // show the 5 most popular posts on the post view
         $popularPosts = Post::query()

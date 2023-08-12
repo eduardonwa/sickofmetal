@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Post;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class PostView extends Model
 {
@@ -15,4 +17,9 @@ class PostView extends Model
         'post_id',
         'user_id'
     ];
+
+    public function post(): HasOne
+    {
+        return $this->hasOne(Post::class);
+    }
 }
