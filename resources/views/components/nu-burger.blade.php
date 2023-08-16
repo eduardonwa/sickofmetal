@@ -8,6 +8,7 @@
         transition-all
         duration-200
         md:px-12
+        
     "
     :class="{'h-24 p-2': !scrolledFromTop, 'h-12': scrolledFromTop}"
 >
