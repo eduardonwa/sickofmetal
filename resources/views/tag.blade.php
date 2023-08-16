@@ -23,7 +23,7 @@
                             </span>
                             <div class="flex pt-2 space-x-2">
                                 @foreach ($post->tags as $tag)
-                                    <span class="bg-black text-white p-1 border dark:sick-border dark:text-gray-200">
+                                    <span class="bg-black text-white p-1 border dark:border-red-600 dark:sick-text">
                                         {{ $tag->name }}
                                     </span>
                                 @endforeach

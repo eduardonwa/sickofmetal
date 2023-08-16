@@ -18,11 +18,9 @@
     <link rel="manifest" href="/site.webmanifest">
     <style>
         @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
-
         .font-family-karla {
             font-family: karla;
         }
-
         pre {
             padding: 1rem;
             background-color: #1a202c;
@@ -31,17 +29,65 @@
             margin-bottom: 1rem;
             margin-top: 1rem;
         }
-
         .charcoal {
             background-color: #212121;
         }
-
         [x-cloak] { display: none !important; }
-
         #postLinks > a:link, a:hover > span {
             text-decoration: underline;
             text-decoration-thickness: 2px;
             text-decoration-color: #ff0808;
+        }
+        .btn-tertiary {
+            backface-visibility: hidden;
+            background: #1B00FF;
+            border: 0;
+            border-radius: .375rem;
+            box-sizing: border-box;
+            color: #eff3f5;
+            cursor: pointer;
+            display: inline-block;
+            font-family: Circular,Helvetica,sans-serif;
+            font-size: 1.125rem;
+            letter-spacing: -.01em;
+            line-height: 1.3;
+            padding: 1rem 1.25rem;
+            position: relative;
+            text-align: left;
+            text-decoration: none;
+            transform: translateZ(0) scale(1);
+            transition: transform .2s;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+        }
+        .btn-tertiary:disabled {
+            color: #787878;
+            cursor: auto;
+        }
+        .btn-tertiary:not(:disabled):hover {
+            transform: scale(1.05);
+        }
+        .btn-tertiary:not(:disabled):hover:active {
+            transform: scale(1.05) translateY(.125rem);
+        }
+        .btn-tertiary:focus {
+            outline: 0 solid transparent;
+        }
+        .btn-tertiary:focus:before {
+            border-width: .125rem;
+            left: calc(-1*.375rem);
+            pointer-events: none;
+            position: absolute;
+            top: calc(-1*.375rem);
+            transition: border-radius;
+            user-select: none;
+        }
+        .btn-tertiary:focus:not(:focus-visible) {
+            outline: 0 solid transparent;
+        }
+        .btn-tertiary:not(:disabled):active {
+            transform: translateY(.125rem);
         }
     </style>
 
