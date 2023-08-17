@@ -8,7 +8,7 @@
         transition-all
         duration-200
         md:px-12
-        
+
     "
     :class="{'h-24 p-2': !scrolledFromTop, 'h-12': scrolledFromTop}"
 >
@@ -154,6 +154,8 @@
                 <a href="/" class="flex items-center justify-center w-full">
                     <img
                         class="h-16 md:hidden transition-all duration-200"
+                        width="170"
+                        height="64"
                         src="{{ \App\Models\TextWidget::getImage('header') }}"
                         alt="sick of metal logo"
                     >

@@ -91,14 +91,11 @@
         }
     </style>
 
-    <!-- Font Awesome -->
-    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script> --}}
-    {{-- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> --}}
     <!-- Scripts -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5338710529457277"
-     crossorigin="anonymous"></script>
     @livewireStyles()
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5338710529457277"
+     crossorigin="anonymous" defer></script>
 </head>
 
 <!-- Google tag (gtag.js) -->
@@ -181,6 +178,8 @@
             <a href="/">
                 <img
                     class="w-64 py-4"
+                    width="256"
+                    height="130"
                     src="{{ \App\Models\TextWidget::getImage('header') }}"
                 >
             </a> <!-- logo end -->
