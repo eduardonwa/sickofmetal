@@ -197,7 +197,7 @@
           elem.src = '/lite-yt-embed.js';
           document.head.append(elem);
 
-          document.querySelector('#done').textContent = 'Script complete.'
+          console.log('Done loading YouTube script')
         }, 2000);
     </script>
 </body>
