@@ -131,7 +131,7 @@
                 <a href="{{ route('view', $post) }}">
                     <div class="grid grid-cols-[1fr_1fr] gap-3">
                         <div class="relative h-0 pb-2/3 sm:pt-1/3 lg:pb-1/3">
-                            <img class="absolute w-full h-full inset-0 object-cover object-top"
+                            <img class="absolute w-full h-full inset-0 object-cover object-top pb-3"
                                 src="{{ $post->getThumbnail() }}"
                                 alt="metal post thumbnail"
                             >
