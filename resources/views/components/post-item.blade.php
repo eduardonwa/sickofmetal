@@ -10,11 +10,11 @@
                 </a>
             @endforeach
             <a href="{{ route('view', $popularPost) }}">
-                <h3 class="dark:text-gray-200 ">
+                <h1 class="text-lg md:text-base dark:text-gray-200">
                     <span class="antialiased hover:sick-bg dark:hover:sick-bg dark:hover:text-black">
                         {{$popularPost->title}}
                     </span>
-                </h3>
+                </h1>
             </a>
         </div>
     </div>
