@@ -25,9 +25,9 @@
                         @endforeach
                     </h1>
                     <a href="{{ route('view', $latestPost) }}">
-                        <h3 class="text-3xl text-white font-bold m-1 transition ease-out hover:text-gray-300">
+                        <h2 class="text-3xl text-white font-bold m-1 transition ease-out hover:text-gray-300">
                             {{ $latestPost->title }}
-                        </h3>
+                        </h2>
                     </a>
                     <p class="m-1 text-gray-300">
                         {{ $latestPost->caption }}
@@ -60,7 +60,10 @@
                 <div class="m-4 md:m-0 bg-white dark:bg-zinc-800 overflow-hidden shadow-md">
                     <a href="{{ route('view', $recommended) }}" class="h-full flex flex-col">
                         <div class="relative h-0 pb-2/3 sm:pt-1/3 lg:pb-1/3">
-                            <img class="absolute w-full h-full inset-0 object-cover object-top" src="{{ $recommended->getThumbnail() }}">
+                            <img
+                                class="absolute w-full h-full inset-0 object-cover object-top"
+                                alt="Thumbnail of the suggested post"
+                                src="{{ $recommended->getThumbnail() }}">
                         </div>
                         <p class="h-full w-full p-2 text-gray-200 font-bold bg-black dark:hover:sick-text hover:sick-text dark:text-gray-200 lg:text-md transition ease-in-out">
                             {{ $recommended->shortTitle() }}
@@ -88,7 +91,7 @@
                 <div class="relative h-0 pb-44 sm:pt-1/3 md:pb-0 lg:pb-2/12">
                     <img class="absolute w-full h-44 lg:h-full inset-0 object-cover object-top"
                         src="{{ $lastTwo->getThumbnail() }}"
-                        alt="metal post thumbnail"
+                        alt="Latest post thumbnail"
                     >
                 </div>
                 <p class="
@@ -123,9 +126,9 @@
     <div class="mx-4 md:mx-0 md:col-start-2 md:col-end-5">
         <div class="p-3 bg-white dark:bg-transparent dark:lg:bg-zinc-900 shadow-md">
             <a href="category/{{ $category->slug }}">
-                <h3 class="pb-3 text-lg lg:text-xl font-black dark:text-zinc-400">
+                <h1 class="pb-3 text-lg lg:text-xl font-black dark:text-zinc-400">
                     {{ $category->title }}
-                </h3>
+                </h1>
             </a>
             @foreach($category->publishedPosts()->latest()->limit(2)->get() as $post)
                 <a href="{{ route('view', $post) }}">

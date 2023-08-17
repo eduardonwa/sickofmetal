@@ -113,7 +113,7 @@
         </a> <!-- logo end -->
 
         <nav>
-            <button class="md:hidden" @click="navbarOpen = !navbarOpen">
+            <button class="md:hidden" @click="navbarOpen = !navbarOpen" aria-label="Search website icon">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gray-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
@@ -144,7 +144,7 @@
                 :class="{'translate-x-full': !navbarOpen, 'translate-x-0': navbarOpen}"
             >
                 <li class="flex items-center justify-end mr-5">
-                    <button class="md:hidden" @click="navbarOpen = !navbarOpen">
+                    <button class="md:hidden" @click="navbarOpen = !navbarOpen" aria-label="Hamburger menu icon">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gray-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                         </svg>
