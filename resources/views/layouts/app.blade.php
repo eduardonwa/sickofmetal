@@ -99,6 +99,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5338710529457277"
      crossorigin="anonymous" defer></script>
+    <link rel="stylesheet" href="/lite-yt-embed.css">
 </head>
 
 <!-- Google tag (gtag.js) -->
@@ -189,30 +190,15 @@
             </a> <!-- logo end -->
         </div>
     </footer>
-
     <script>
-        function getCarouselData() {
-            return {
-                currentIndex: 0,
-                images: [
-                    'https://source.unsplash.com/collection/1346951/800x800?sig=1',
-                    'https://source.unsplash.com/collection/1346951/800x800?sig=2',
-                    'https://source.unsplash.com/collection/1346951/800x800?sig=3',
-                    'https://source.unsplash.com/collection/1346951/800x800?sig=4',
-                    'https://source.unsplash.com/collection/1346951/800x800?sig=5',
-                    'https://source.unsplash.com/collection/1346951/800x800?sig=6',
-                    'https://source.unsplash.com/collection/1346951/800x800?sig=7',
-                    'https://source.unsplash.com/collection/1346951/800x800?sig=8',
-                    'https://source.unsplash.com/collection/1346951/800x800?sig=9',
-                ],
-                increment() {
-                    this.currentIndex = this.currentIndex === this.images.length - 6 ? 0 : this.currentIndex + 1;
-                },
-                decrement() {
-                    this.currentIndex = this.currentIndex === this.images.length - 6 ? 0 : this.currentIndex - 1;
-                },
-            }
-        }
+        // artificial delay somewhat simulates a script[defer]
+        setTimeout(_ => {
+          const elem = document.createElement('script');
+          elem.src = '/lite-yt-embed.js';
+          document.head.append(elem);
+
+          document.querySelector('#done').textContent = 'Script complete.'
+        }, 2000);
     </script>
 </body>
 </html>
