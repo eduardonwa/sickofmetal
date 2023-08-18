@@ -95,10 +95,10 @@
     </style>
 
     <!-- Scripts -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5338710529457277"
+    crossorigin="anonymous"></script>
     @livewireStyles()
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5338710529457277"
-     crossorigin="anonymous" defer></script>
     <link rel="stylesheet" href="/lite-yt-embed.css">
 </head>
 
