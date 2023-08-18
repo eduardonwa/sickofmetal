@@ -10,7 +10,6 @@ use Illuminate\Support\Str;
 use Filament\Resources\Form;
 use Filament\Resources\Table;
 use Filament\Resources\Resource;
-use Forms\Components\FileUpload;
 use FilamentTiptapEditor\TiptapEditor;
 use Filament\Forms\Components\TagsInput;
 use Filament\Forms\Components\ViewField;
@@ -20,8 +19,6 @@ use Filament\Forms\Components\SpatieTagsInput;
 use Spatie\FilamentMarkdownEditor\MarkdownEditor;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\PostResource\RelationManagers;
-use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
-use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 
 class PostResource extends Resource
 {
@@ -61,14 +58,11 @@ class PostResource extends Resource
                 ])->columnSpan(8),
                 Forms\Components\Card::make()
                 ->schema([
-                    SpatieMediaLibraryFileUpload::make('thumbnail')
-                        ->collection('thumbnails')
-                        ->multiple()
-                        ->responsiveImages(),
+                    Forms\Components\FileUpload::make('thumbnail'),
                     Forms\Components\Select::make('category_id')
-                        ->multiple()
-                        ->relationship('categories', 'title')
-                        ->required(),
+                    ->multiple()
+                    ->relationship('categories', 'title')
+                    ->required(),
                     SpatieTagsInput::make('tags')
                         ->separator(',')
                 ])->columnSpan(4)
@@ -79,7 +73,7 @@ class PostResource extends Resource
     {
         return $table
             ->columns([
-                SpatieMediaLibraryImageColumn::make('thumbnail'),
+                Tables\Columns\ImageColumn::make('thumbnail'),
                 Tables\Columns\TextColumn::make('title')->searchable(['title', 'body'])->sortable(),
                 Tables\Columns\IconColumn::make('active')->sortable()
                     ->boolean(),

@@ -63,7 +63,7 @@
                             <img
                                 class="absolute w-full h-full inset-0 object-cover object-top"
                                 alt="Thumbnail of the suggested post"
-                                src="{{ $recommended->media }}">
+                                src="{{ $recommended->getThumbnail() }}">
                         </div>
                         <p class="h-full w-full p-2 text-gray-200 font-bold bg-black dark:hover:sick-text hover:sick-text dark:text-gray-200 lg:text-md transition ease-in-out">
                             {{ $recommended->shortTitle() }}
@@ -90,7 +90,7 @@
             <a href="{{ route('view', $lastTwo) }}">
                 <div class="relative h-0 pb-44 sm:pt-1/3 md:pb-0 lg:pb-2/12">
                     <img class="absolute w-full h-44 lg:h-full inset-0 object-cover object-top"
-                        src="{{ $lastTwo->media }}"
+                        src="{{ $lastTwo->getThumbnail() }}"
                         alt="Latest post thumbnail"
                     >
                 </div>
@@ -135,7 +135,7 @@
                     <div class="grid grid-cols-[1fr_1fr] gap-3">
                         <div class="relative h-0 pb-2/3 sm:pt-1/3 lg:pb-1/3">
                             <img class="absolute w-full h-full inset-0 object-cover object-top pb-3"
-                                src="{{ $post->media }}"
+                                src="{{ $post->getThumbnail() }}"
                                 alt="metal post thumbnail"
                             >
                         </div>
