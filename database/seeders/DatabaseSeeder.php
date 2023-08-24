@@ -16,15 +16,16 @@ class DatabaseSeeder extends Seeder
     {
         /** @var \App\Models\User $adminUser */
 
-        // \App\Models\User::factory(10)->create();
         \App\Models\Post::factory(10)->create();
 
+        // Create admin user
         $adminUser = User::factory()->create([
             'email' => 'admin@correo.com',
             'name' => 'Admin',
             'password' => bcrypt('admin123')
         ]);
 
+        // assign admin role
         $adminRole = Role::create(['name' => 'admin']);
         $adminUser->assignRole($adminRole);
 

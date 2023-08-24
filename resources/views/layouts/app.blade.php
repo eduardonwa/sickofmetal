@@ -95,10 +95,10 @@
     </style>
 
     <!-- Scripts -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5338710529457277"
-    crossorigin="anonymous"></script>
     @livewireStyles()
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5338710529457277"
+    crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/lite-yt-embed.css">
 </head>
 
@@ -178,18 +178,22 @@
             @endforeach
         </div>
 
-        <div class="mx-auto container flex items-center justify-center">
+        <div class="dark:text-gray-400 px-5 mx-auto container flex flex-col items-center justify-center">
             <a href="/" aria-label="Sick Of Metal">
                 <img
                     class="w-64 py-4"
                     width="256"
                     height="130"
                     alt="Sick Of Metal logo"
-                    src="{{ \App\Models\TextWidget::getImage('header') }}"
+                    src="{{ \App\Models\TextWidget::getImage('footer') }}"
                 >
             </a> <!-- logo end -->
+            <p>
+                {!! \App\Models\TextWidget::getContent('footer') !!}
+            </p>
         </div>
     </footer>
+
     <script>
         // artificial delay somewhat simulates a script[defer]
         setTimeout(_ => {
