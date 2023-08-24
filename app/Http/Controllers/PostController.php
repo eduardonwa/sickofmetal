@@ -2,18 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tag;
 use App\Models\Post;
 use App\Models\Category;
 use App\Models\PostView;
 use App\Models\CategoryPost;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Spatie\MediaLibrary\HasMedia;
 use Illuminate\Support\Facades\DB;
+use Spatie\MediaLibrary\InteractsWithMedia;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use App\Models\Tag;
 
-class PostController extends Controller
+class PostController extends Controller implements HasMedia
 {
+    use InteractsWithMedia;
     /**
      * Display a listing of the resource.
      */

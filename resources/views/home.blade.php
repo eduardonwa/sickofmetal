@@ -15,9 +15,10 @@
             <article class="relative lg:h-0 lg:p-1/3">
                 <img
                     class="relative lg:absolute lg:inset-0 w-full h-96 lg:h-full object-top object-cover"
-                    src="{{ $latestPost->getThumbnail() }}"
-                    alt="thumbnail from the most popular post on the site"
-                >
+                    src="{{ $latestPost->getMedia('thumbnails') }}"
+                    alt="Thumbnail of the newest post"
+                    srcset="{{ $latestPost->getFirstMedia('thumbnails')->getSrcset() }}"
+                />
                 <div class="absolute bottom-0 left-0 right-0 py-2 bg-gradient-to-t from-black to-transparent lg:p-16 p-3 lg:pb-5">
                     <h1 class="lg:text-lg text-base mb-3 uppercase font-bold bg-red-600 mx-1 p-1 w-max text-center text-white">
                         @foreach ($latestPost->categories as $category)
@@ -63,7 +64,9 @@
                             <img
                                 class="absolute w-full h-full inset-0 object-cover object-top"
                                 alt="Thumbnail of the suggested post"
-                                src="{{ $recommended->getThumbnail() }}">
+                                src="{{ $recommended->getMedia('thumbnails') }}"
+                                srcset="{{ $recommended->getFirstMedia('thumbnails')->getSrcset() }}"
+                            >
                         </div>
                         <p class="h-full w-full p-2 text-gray-200 font-bold bg-black dark:hover:sick-text hover:sick-text dark:text-gray-200 lg:text-md transition ease-in-out">
                             {{ $recommended->shortTitle() }}
@@ -89,9 +92,11 @@
         @foreach($latestPosts->skip(1)->take(2) as $lastTwo)
             <a href="{{ route('view', $lastTwo) }}">
                 <div class="relative h-0 pb-44 sm:pt-1/3 md:pb-0 lg:pb-2/12">
-                    <img class="absolute w-full h-44 lg:h-full inset-0 object-cover object-top"
-                        src="{{ $lastTwo->getThumbnail() }}"
+                    <img
+                        class="absolute w-full h-44 lg:h-full inset-0 object-cover object-top"
                         alt="Latest post thumbnail"
+                        src="{{ $lastTwo->getMedia('thumbnails') }}"
+                        srcset="{{ $lastTwo->getFirstMedia('thumbnails')->getSrcset() }}"
                     >
                 </div>
                 <p class="
@@ -134,9 +139,11 @@
                 <a href="{{ route('view', $post) }}">
                     <div class="grid grid-cols-[1fr_1fr] gap-3">
                         <div class="relative h-0 pb-2/3 sm:pt-1/3 lg:pb-1/3">
-                            <img class="absolute w-full h-full inset-0 object-cover object-top pb-3"
-                                src="{{ $post->getThumbnail() }}"
-                                alt="metal post thumbnail"
+                            <img
+                                class="absolute w-full h-full inset-0 object-cover object-top pb-3"
+                                alt="Category post thumbnail"
+                                src="{{ $post->getMedia('thumbnails') }}"
+                                srcset="{{ $post->getFirstMedia('thumbnails')->getSrcset() }}"
                             >
                         </div>
                         <div class="flex md:flex-col md:px-8 md:justify-center">
