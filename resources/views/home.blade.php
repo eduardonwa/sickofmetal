@@ -15,9 +15,15 @@
             <article class="relative lg:h-0 lg:p-1/3">
                 <img
                     class="relative lg:absolute lg:inset-0 w-full h-96 lg:h-full object-top object-cover"
+<<<<<<< HEAD
                     src="{{ $latestPost->getFirstMediaUrl('thumbnails') }}"
                     alt="Thumbnail of the newest post"
                     {{-- srcset="{{ $latestPost->getFirstMedia('thumbnails')->getSrcset() }}" --}}
+=======
+                    src="{{ $latestPost->getMedia('thumbnails') }}"
+                    alt="Thumbnail of the newest post"
+                    srcset="{{ $latestPost->getFirstMedia('thumbnails')->getSrcset() }}"
+>>>>>>> c8494fcfc9640a554a4d47c526f437b73a27e8c0
                 />
                 <div class="absolute bottom-0 left-0 right-0 py-2 bg-gradient-to-t from-black to-transparent lg:p-16 p-3 lg:pb-5">
                     <h1 class="lg:text-lg text-base mb-3 uppercase font-bold bg-red-600 mx-1 p-1 w-max text-center text-white">
@@ -64,8 +70,13 @@
                             <img
                                 class="absolute w-full h-full inset-0 object-cover object-top"
                                 alt="Thumbnail of the suggested post"
+<<<<<<< HEAD
                                 src="{{ $recommended->getFirstMediaUrl('thumbnails') }}"
                                 {{-- srcset="{{ $recommended->getFirstMedia('thumbnails')->getSrcset() }}" --}}
+=======
+                                src="{{ $recommended->getMedia('thumbnails') }}"
+                                srcset="{{ $recommended->getFirstMedia('thumbnails')->getSrcset() }}"
+>>>>>>> c8494fcfc9640a554a4d47c526f437b73a27e8c0
                             >
                         </div>
                         <p class="h-full w-full p-2 text-gray-200 font-bold bg-black dark:hover:sick-text hover:sick-text dark:text-gray-200 lg:text-md transition ease-in-out">
@@ -95,8 +106,13 @@
                     <img
                         class="absolute w-full h-44 lg:h-full inset-0 object-cover object-top"
                         alt="Latest post thumbnail"
+<<<<<<< HEAD
                         src="{{ $lastTwo->getFirstMediaUrl('thumbnails') }}"
                         {{-- srcset="{{ $lastTwo->getFirstMedia('thumbnails')->getSrcset() }}" --}}
+=======
+                        src="{{ $lastTwo->getMedia('thumbnails') }}"
+                        srcset="{{ $lastTwo->getFirstMedia('thumbnails')->getSrcset() }}"
+>>>>>>> c8494fcfc9640a554a4d47c526f437b73a27e8c0
                     >
                 </div>
                 <p class="
@@ -142,8 +158,13 @@
                             <img
                                 class="absolute w-full h-full inset-0 object-cover object-top pb-3"
                                 alt="Category post thumbnail"
+<<<<<<< HEAD
                                 src="{{ $post->getFirstMediaUrl('thumbnails') }}"
                                 {{-- srcset="{{ $post->getFirstMedia('thumbnails')->getSrcset() }}" --}}
+=======
+                                src="{{ $post->getMedia('thumbnails') }}"
+                                srcset="{{ $post->getFirstMedia('thumbnails')->getSrcset() }}"
+>>>>>>> c8494fcfc9640a554a4d47c526f437b73a27e8c0
                             >
                         </div>
                         <div class="flex md:flex-col md:px-8 md:justify-center">
