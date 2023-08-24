@@ -37,15 +37,9 @@
             <div class="relative h-0 pb-2/3 sm:pt-1/3 lg:pb-1/3 hover:opacity-75">
                 <img
                     class="absolute inset-0 w-full h-full object-top object-cover"
-<<<<<<< HEAD
-                    src="{{ $post->getFirstMediaUrl('thumbnails') }}"
+                    src="{{ $post->getThumbnail() }}"
                     alt="Thumbnail of the post"
                     {{-- srcset="{{ $post->getFirstMedia('thumbnails')->getSrcset() }}" --}}
-=======
-                    src="{{ $post->getMedia('thumbnails') }}"
-                    alt="Thumbnail of the post"
-                    srcset="{{ $post->getFirstMedia('thumbnails')->getSrcset() }}"
->>>>>>> c8494fcfc9640a554a4d47c526f437b73a27e8c0
                 >
             </div>
 
