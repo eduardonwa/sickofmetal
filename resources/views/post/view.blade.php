@@ -37,9 +37,9 @@
             <div class="relative h-0 pb-2/3 sm:pt-1/3 lg:pb-1/3 hover:opacity-75">
                 <img
                     class="absolute inset-0 w-full h-full object-top object-cover"
-                    src="{{ $post->getThumbnail() }}"
+                    src="{{ $post->getMedia('thumbnails') }}"
                     alt="Thumbnail of the post"
-                    {{-- srcset="{{ $post->getFirstMedia('thumbnails')->getSrcset() }}" --}}
+                    srcset="{{ $post->getFirstMedia('thumbnails')->getSrcset() }}"
                 >
             </div>
 
