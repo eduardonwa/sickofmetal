@@ -15,7 +15,7 @@
             <article class="relative lg:h-0 lg:p-1/3">
                 <img
                     class="relative lg:absolute lg:inset-0 w-full h-96 lg:h-full object-top object-cover"
-                    src="{{ $latestPost->getFirstMediaUrl('thumbnails') }}"
+                    src="{{ $latestPost->getThumbnail() }}"
                     alt="Thumbnail of the newest post"
                     {{-- srcset="{{ $latestPost->getFirstMedia('thumbnails')->getSrcset() }}" --}}
                 />
