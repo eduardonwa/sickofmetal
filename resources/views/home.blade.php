@@ -15,10 +15,8 @@
             <article class="relative lg:h-0 lg:p-1/3">
                 <img
                     class="relative lg:absolute lg:inset-0 w-full h-96 lg:h-full object-top object-cover"
-                    src="{{ $latestPost->getMedia('thumbnails') }}"
-                    srcset="{{ $latestPost->getFirstMedia('thumbnails')->getSrcset() }}"
+                    src="{{ $latestPost->getThumbnail() }}"
                     alt="Thumbnail of the newest post"
-                    {{-- srcset="{{ $latestPost->getFirstMedia('thumbnails')->getSrcset() }}" --}}
                 />
                 <div class="absolute bottom-0 left-0 right-0 py-2 bg-gradient-to-t from-black to-transparent lg:p-16 p-3 lg:pb-5">
                     <h1 class="lg:text-lg text-base mb-3 uppercase font-bold bg-red-600 mx-1 p-1 w-max text-center text-white">
@@ -66,7 +64,6 @@
                                 class="absolute w-full h-full inset-0 object-cover object-top"
                                 alt="Thumbnail of the suggested post"
                                 src="{{ $recommended->getThumbnail() }}"
-                                {{-- srcset="{{ $recommended->getFirstMedia('thumbnails')->getSrcset() }}" --}}
                             >
                         </div>
                         <p class="h-full w-full p-2 text-gray-200 font-bold bg-black dark:hover:sick-text hover:sick-text dark:text-gray-200 lg:text-md transition ease-in-out">
@@ -97,7 +94,6 @@
                         class="absolute w-full h-44 lg:h-full inset-0 object-cover object-top"
                         alt="Latest post thumbnail"
                         src="{{ $lastTwo->getThumbnail() }}"
-                        {{-- srcset="{{ $lastTwo->getFirstMedia('thumbnails')->getSrcset() }}" --}}
                     >
                 </div>
                 <p class="
@@ -144,7 +140,6 @@
                                 class="absolute w-full h-full inset-0 object-cover object-top pb-3"
                                 alt="Category post thumbnail"
                                 src="{{ $post->getThumbnail() }}"
-                                {{-- srcset="{{ $post->getFirstMedia('thumbnails')->getSrcset() }}" --}}
                             >
                         </div>
                         <div class="flex md:flex-col md:px-8 md:justify-center">
