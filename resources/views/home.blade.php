@@ -15,9 +15,9 @@
             <article class="relative lg:h-0 lg:p-1/3">
                 <img
                     class="relative lg:absolute lg:inset-0 w-full h-96 lg:h-full object-top object-cover"
-                    src="{{ $latestPost->getThumbnail() }}"
+                    src="{{ $latestPost->getMedia('thumbnails') }}"
                     alt="Thumbnail of the newest post"
-                    {{-- srcset="{{ $latestPost->getFirstMedia('thumbnails')->getSrcset() }}" --}}
+                    srcset="{{ $latestPost->getFirstMedia('thumbnails')->getSrcset() }}"
                 />
                 <div class="absolute bottom-0 left-0 right-0 py-2 bg-gradient-to-t from-black to-transparent lg:p-16 p-3 lg:pb-5">
                     <h1 class="lg:text-lg text-base mb-3 uppercase font-bold bg-red-600 mx-1 p-1 w-max text-center text-white">
