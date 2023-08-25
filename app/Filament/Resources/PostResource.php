@@ -78,7 +78,8 @@ class PostResource extends Resource
     {
         return $table
             ->columns([
-                SpatieMediaLibraryImageColumn::make('thumbnail'),
+                SpatieMediaLibraryImageColumn::make('thumbnails')
+                    ->collection('thumbnails'),
                 Tables\Columns\TextColumn::make('title')->searchable(['title', 'body'])->sortable(),
                 Tables\Columns\IconColumn::make('active')->sortable()
                     ->boolean(),

@@ -185,11 +185,11 @@
                     width="256"
                     height="130"
                     alt="Sick Of Metal logo"
-                    src="{{ \App\Models\TextWidget::getImage('footer') }}"
+                    src="{{ \App\Models\TextWidget::getImage('header') }}"
                 >
             </a> <!-- logo end -->
             <p>
-                {!! \App\Models\TextWidget::getContent('footer') !!}
+                {!! \App\Models\TextWidget::getContent('header') !!}
             </p>
         </div>
     </footer>
