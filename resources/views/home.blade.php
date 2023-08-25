@@ -65,7 +65,7 @@
                             <img
                                 class="absolute w-full h-full inset-0 object-cover object-top"
                                 alt="Thumbnail of the suggested post"
-                                src="{{ $recommended->getMedia('thumbnails') }}"
+                                src="{{ $recommended->getThumbnails() }}"
                                 {{-- srcset="{{ $recommended->getFirstMedia('thumbnails')->getSrcset() }}" --}}
                             >
                         </div>
