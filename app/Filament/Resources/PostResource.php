@@ -13,6 +13,8 @@ use Filament\Resources\Resource;
 use FilamentTiptapEditor\TiptapEditor;
 use Filament\Forms\Components\TagsInput;
 use Filament\Forms\Components\ViewField;
+use Filament\Tables\Columns\ImageColumn;
+use Filament\Forms\Components\FileUpload;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\PostResource\Pages;
 use Filament\Forms\Components\SpatieTagsInput;
@@ -60,7 +62,7 @@ class PostResource extends Resource
                 ])->columnSpan(8),
                 Forms\Components\Card::make()
                 ->schema([
-                    SpatieMediaLibraryFileUpload::make('thumbnail')
+                    FileUpload::make('thumbnail')
                         ->collection('thumbnails')
                         ->responsiveImages()
                         ->required(),
@@ -78,8 +80,7 @@ class PostResource extends Resource
     {
         return $table
             ->columns([
-                SpatieMediaLibraryImageColumn::make('thumbnails')
-                    ->collection('thumbnails'),
+                ImageColumn::make('thumbnail'),
                 Tables\Columns\TextColumn::make('title')->searchable(['title', 'body'])->sortable(),
                 Tables\Columns\IconColumn::make('active')->sortable()
                     ->boolean(),
