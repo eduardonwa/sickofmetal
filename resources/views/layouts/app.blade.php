@@ -25,7 +25,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5338710529457277"
     crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/css/lite-yt-embed.css">
+    <link rel="stylesheet" href="/css/lite-yt/lite-yt-embed.css">
 </head>
 
 <!-- Google tag (gtag.js) -->
@@ -124,7 +124,7 @@
         // artificial delay somewhat simulates a script[defer]
         setTimeout(_ => {
           const elem = document.createElement('script');
-          elem.src = '/lite-yt/lite-yt-embed.js';
+          elem.src = '/js/lite-yt-embed.js';
           document.head.append(elem);
 
           console.log('Done loading YouTube script')
