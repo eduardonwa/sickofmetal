@@ -96,7 +96,7 @@
                         class="absolute w-full h-44 lg:h-full inset-0 object-cover object-top"
                         alt="Latest post thumbnail"
                         src="{{ $lastTwo->getThumbnail() }}"
-                        {{-- srcset="{{ $lastTwo->getFirstMedia('thumbnails')->getSrcset() }}" --}}
+                        srcset="{{ $lastTwo->getFirstMedia('thumbnails')->getSrcset() }}"
                     >
                 </div>
                 <p class="
