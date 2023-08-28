@@ -65,7 +65,7 @@
                                 class="absolute w-full h-full inset-0 object-cover object-top"
                                 alt="Thumbnail of the suggested post"
                                 src="{{ $recommended->getThumbnail() }}"
-                                {{-- srcset="{{ $recommended->getFirstMedia('thumbnails')->getSrcset() }}" --}}
+                                srcset="{{ $recommended->getFirstMedia('thumbnails')->getSrcset() }}"
                             >
                         </div>
                         <p class="h-full w-full p-2 text-gray-200 font-bold bg-black dark:hover:sick-text hover:sick-text dark:text-gray-200 lg:text-md transition ease-in-out">
