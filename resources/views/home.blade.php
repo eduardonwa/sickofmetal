@@ -140,7 +140,6 @@
                                 class="absolute w-full h-full inset-0 object-cover object-top pb-3"
                                 alt="Category post thumbnail"
                                 src="{{ $post->getThumbnail() }}"
-                                srcset="{{ $post->getFirstMedia('thumbnails')->getSrcset() }}"
                             >
                         </div>
                         <div class="flex md:flex-col md:px-8 md:justify-center">
