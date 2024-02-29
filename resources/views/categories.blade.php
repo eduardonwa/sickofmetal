@@ -7,7 +7,7 @@
             <div class="max-w-sm rounded overflow-hidden shadow-lg h-full">
                 <div class="relative h-0 pb-2/3 sm:pt-1/3 lg:pb-1/3 overflow-hidden bg-gray-100">
                     <img class="absolute h-full w-full object-cover object-top inset-0 overflow-hidden transform scale-100 hover:scale-150 ease-in-out duration-1000"
-                        src="{{ $post->getFirstMediaUrl('thumbnails') }}"
+                        src="{{ $post->getThumbnail() }}"
                     alt="Category thumbnail post">
                 </div>
                 <div class="h-full text-center bg-white dark:bg-zinc-900 text-gray-900 dark:text-gray-200 p-3">

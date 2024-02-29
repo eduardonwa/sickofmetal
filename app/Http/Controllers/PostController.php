@@ -9,14 +9,11 @@ use App\Models\PostView;
 use App\Models\CategoryPost;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
-use Spatie\MediaLibrary\HasMedia;
 use Illuminate\Support\Facades\DB;
-use Spatie\MediaLibrary\InteractsWithMedia;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-class PostController extends Controller implements HasMedia
+class PostController extends Controller
 {
-    use InteractsWithMedia;
     /**
      * Display a listing of the resource.
      */

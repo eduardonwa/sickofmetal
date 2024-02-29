@@ -11,17 +11,15 @@ use Spatie\Tags\HasTags;
 use Illuminate\Support\Str;
 use Spatie\MediaLibrary\HasMedia;
 use Illuminate\Database\Eloquent\Model;
-use Spatie\MediaLibrary\InteractsWithMedia;
-use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class Post extends Model implements HasMedia
+class Post extends Model
 {
-    use HasFactory, HasTags, InteractsWithMedia;
+    use HasFactory, HasTags;
 
     protected $fillable = [
         'title',
@@ -97,8 +95,4 @@ class Post extends Model implements HasMedia
                 ->nonQueued();
     }
 
-    public function registerMediaCollections(): void
-    {
-        $this->addMediaCollection('thumbnails');
-    }
 }
