@@ -1,5 +1,4 @@
-<x-app-layout :meta-title="$post->title" :meta-description="$post->caption">
-    <meta name="twitter:image" :content="$post->getThumbnail()" />
+<x-app-layout :meta-title="$post->title" :meta-description="$post->title">
     <section class="my-32 px-3 lg:col-start-2 lg:col-end-5 w-mx-auto">
 
         <article class="flex flex-col">
