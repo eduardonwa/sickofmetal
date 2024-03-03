@@ -12,10 +12,10 @@
     <title>{{ $metaTitle ?: 'Sick Of Metal'}}</title>
     <meta name="Sick of Metal" content="Heavy MEtAL">
     <meta name="description" content="{{ $metaDescription }}">
+    <meta name="twitter:image" content="{{ $metaThumbnail }}">
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Cache-Control" content="no-cache" />
     <meta http-equiv="Expires" content="-1" />
-    <meta name="twitter:image" :content="$post->getThumbnail()" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">

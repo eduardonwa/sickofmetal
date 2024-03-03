@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 
 class AppLayout extends Component
 {
-    public function __construct(public ?string $metaTitle = null, public ?string $metaDescription = null)
+    public function __construct(public ?string $metaTitle = null, public ?string $metaDescription = null, public ?string $metaThumbnail = null)
     {
 
     }
@@ -28,7 +28,7 @@ class AppLayout extends Component
             ->orderByDesc('posts_count')
             ->limit(5)
             ->get();
-        
+
             $allCategories = Category::with('subCategory')
             ->whereNull('parent_id')
             ->get()
@@ -36,9 +36,9 @@ class AppLayout extends Component
                 $subCategories = $category->subCategory->toArray();
                 unset($category['sub_category']);
                 return [$category] + $subCategories;
-            }); 
+            });
             $allCategories = collect($allCategories)->where('parent_id', null)->values();
-            
+
         return view('layouts.app', compact('categories', 'allCategories'));
     }
 }
