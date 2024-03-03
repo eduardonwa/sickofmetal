@@ -12,6 +12,10 @@
     <title>{{ $metaTitle ?: 'Sick Of Metal'}}</title>
     <meta name="Sick of Metal" content="Heavy MEtAL">
     <meta name="description" content="{{ $metaDescription }}">
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@sickofmetal" />
+    <meta name="twitter:title" content={{ $metaTitle }} />
+    <meta name="twitter:description" content={{ $metaCaption }} />
     <meta name="twitter:image" content="{{ $metaThumbnail }}">
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Cache-Control" content="no-cache" />

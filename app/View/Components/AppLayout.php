@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 
 class AppLayout extends Component
 {
-    public function __construct(public ?string $metaTitle = null, public ?string $metaDescription = null, public ?string $metaThumbnail = null)
+    public function __construct(public ?string $metaTitle = null, public ?string $metaDescription = null, public ?string $metaCaption = null, public ?string $metaThumbnail = null)
     {
 
     }
