@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <form method="POST" action="{{ route('register') }}" class="my-32">
+    <form id="registerForm" method="POST" action="{{ route('register') }}" class="my-32">
         @csrf
 
         <!-- Name -->
@@ -45,7 +45,12 @@
                 {{ __('Already registered?') }}
             </a>
 
-            <x-primary-button class="ml-4">
+            <x-primary-button
+                class="ml-4 g-recaptcha"
+                data-sitekey="{{ config('services.recaptcha_v3.siteKey') }}"
+                data-callback='onSubmit'
+                data-action='submitUser'
+            >
                 {{ __('Register') }}
             </x-primary-button>
         </div>

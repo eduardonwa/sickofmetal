@@ -31,6 +31,12 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5338710529457277"
     crossorigin="anonymous"></script>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script>
+        function onSubmit(token) {
+            document.getElementById("registerForm").submit();
+        }
+    </script>
     <link rel="stylesheet" href="/css/lite-yt/lite-yt-embed.css">
 </head>
 
